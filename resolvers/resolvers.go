@@ -313,19 +313,16 @@ func GetResolvers() map[string]interface{} {
 			}
 			if params.Args["Perms"] != nil {
 				database.Db.Exec("DELETE FROM perms WHERE user_id = ?", params.Args["Id"].(int32))
-				for key, value := range params.Args["Perms"].([]interface{}) {
-					fmt.Println(key, value)
+				for _, value := range params.Args["Perms"].([]interface{}) {
 					database.Db.Exec("INSERT INTO perms (user_id, perm) VALUES (?, ?)", params.Args["Id"].(int32), value)
 				}
 			}
 			if params.Args["Workplaces"] != nil {
 				database.Db.Exec("DELETE FROM users_workplaces WHERE user_id = ?", params.Args["Id"].(int32))
-				for key, value := range params.Args["Workplaces"].([]interface{}) {
-					fmt.Println(key, value)
+				for _, value := range params.Args["Workplaces"].([]interface{}) {
 					database.Db.Exec("INSERT INTO users_workplaces (user_id, workplace_id) VALUES (?, ?)", params.Args["Id"].(int32), value)
 				}
 			}
-			fmt.Println(params.Args["Perms"])
 			return User(params.Args["Id"].(int32)), nil
 		},
 		"Mutation/insertUser": func(params *graphql.ResolveParams) (interface{}, error) {
@@ -334,13 +331,17 @@ func GetResolvers() map[string]interface{} {
 			//pass := new(bytes.Buffer)
 			//fmt.Fprintf(pass, "%x", h.Sum(nil)) //cast pass hash to var
 			var email string
+			var (
+				out sql.Result
+				err error
+			)
+			username := strings.ToLower(params.Args["Username"].(string))
 			if params.Args["Email"] == nil {
-				email = ""
+				out, err = database.Db.Exec("INSERT INTO users (username, first_name, last_name, bg_color, color, email) VALUES (?, ?, ?, ?, ?, ?)", username, params.Args["FirstName"].(string), params.Args["LastName"].(string), params.Args["BgColor"].(string), params.Args["Color"].(string), nil)
 			} else {
 				email = params.Args["Email"].(string)
+				out, err = database.Db.Exec("INSERT INTO users (username, first_name, last_name, bg_color, color, email) VALUES (?, ?, ?, ?, ?, ?)", username, params.Args["FirstName"].(string), params.Args["LastName"].(string), params.Args["BgColor"].(string), params.Args["Color"].(string), email)
 			}
-			username := strings.ToLower(params.Args["Username"].(string))
-			out, err := database.Db.Exec("INSERT INTO users (username, first_name, last_name, bg_color, color, email) VALUES (?, ?, ?, ?, ?, ?)", username, params.Args["FirstName"].(string), params.Args["LastName"].(string), params.Args["BgColor"].(string), params.Args["Color"].(string), email)
 			if err != nil {
 				return nil, err
 			}
@@ -349,19 +350,16 @@ func GetResolvers() map[string]interface{} {
 				return nil, err
 			}
 			if params.Args["Perms"] != nil {
-				for key, value := range params.Args["Perms"].([]interface{}) {
-					fmt.Println(key, value)
+				for _, value := range params.Args["Perms"].([]interface{}) {
 					database.Db.Exec("INSERT INTO perms (user_id, perm) VALUES (?, ?)", id, value)
 					if err != nil {
 						return nil, err
 					}
 				}
 			}
-			fmt.Println(params.Args["Workplaces"])
 			if params.Args["Workplaces"] != nil {
 
-				for key, value := range params.Args["Workplaces"].([]interface{}) {
-					fmt.Println(key, value)
+				for _, value := range params.Args["Workplaces"].([]interface{}) {
 					database.Db.Exec("INSERT INTO users_workplaces (user_id, workplace_id) VALUES (?, ?)", id, value)
 					if err != nil {
 						return nil, err
@@ -449,7 +447,6 @@ func GetResolvers() map[string]interface{} {
 				if err != nil {
 					log.Fatal(err)
 				}
-				fmt.Println(r)
 				return r, nil
 			}
 			if params.Args["User"] != nil {

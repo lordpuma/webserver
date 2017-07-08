@@ -1,8 +1,6 @@
 package main
 
 import (
-	"github.com/lordpuma/webserver/resolvers"
-	"github.com/lordpuma/webserver/database"
 	"bytes"
 	"context"
 	"crypto/md5"
@@ -11,16 +9,22 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/playlyfe/go-graphql"
+	"github.com/lordpuma/webserver/database"
+	//"github.com/lordpuma/webserver/resolvers"
+	//"github.com/playlyfe/go-graphql"
+	"github.com/graphql-go/graphql"
+
+	"github.com/lordpuma/webserver/Types"
 	"github.com/rs/cors"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
+	"time"
 )
 
-var executor *graphql.Executor
+//var executor *graphql.Executor
 
 func init() {
 	var err error
@@ -50,9 +54,6 @@ func authMiddleware(next http.Handler) http.Handler {
 		}
 	})
 }
-func describe(i interface{}) {
-	fmt.Printf("(%v, %T)\n", i, i)
-}
 
 func test() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -60,37 +61,38 @@ func test() http.Handler {
 	})
 }
 
-func queryHand() http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		var v map[string]interface{}
-		ctx := map[string]interface{}{"user_id": r.Context().Value("user_id")}
-
-		body, err := ioutil.ReadAll(r.Body)
-		if err != nil {
-			fmt.Fprintf(w, "%s", err)
-		}
-		var m interface{}
-		errr := json.Unmarshal(body, &m)
-		if errr != nil {
-			fmt.Fprintf(w, "%s", errr)
-		}
-
-		q := m.(map[string]interface{})["query"].(string)
-		if m.(map[string]interface{})["variables"] != nil {
-			v = m.(map[string]interface{})["variables"].(map[string]interface{})
-		}
-
-		result, err := executor.Execute(ctx, q, v, "")
-		resp, _ := json.Marshal(result)
-		fmt.Fprintf(w, "%s", resp)
-
-	})
-}
-func main() {
-	r := resolvers.GetResolvers()
+//func queryHand() http.Handler {
+//	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+//		var v map[string]interface{}
+//		ctx := map[string]interface{}{"user_id": r.Context().Value("user_id")}
+//
+//		body, err := ioutil.ReadAll(r.Body)
+//		if err != nil {
+//			fmt.Fprintf(w, "%s", err)
+//		}
+//		var m interface{}
+//		errr := json.Unmarshal(body, &m)
+//		if errr != nil {
+//			fmt.Fprintf(w, "%s", errr)
+//		}
+//
+//		q := m.(map[string]interface{})["query"].(string)
+//		if m.(map[string]interface{})["variables"] != nil {
+//			v = m.(map[string]interface{})["variables"].(map[string]interface{})
+//		}
+//
+//		result, err := executor.Execute(ctx, q, v, "")
+//		resp, _ := json.Marshal(result)
+//		fmt.Fprintf(w, "%s", resp)
+//
+//	})
+//}
+func main1() {
+	//r := resolvers.GetResolvers()
 	var err error
-	executor, err = graphql.NewExecutor(resolvers.Schema, "Query", "Mutation", r)
+	//executor, err = graphql.NewExecutor(resolvers.Schema, "Query", "Mutation", r)
 
+	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
 	db, err := sql.Open("mysql", "root:pass@/database")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
@@ -107,7 +109,7 @@ func main() {
 
 	mux.Handle("/test", authMiddleware(test()))
 	//mux.Handle("/query", authMiddleware(queryHand()))
-	mux.Handle("/query", authMiddleware(queryHand()))
+	//mux.Handle("/query", authMiddleware(queryHand()))
 	//mux.Handle("/query", queryHand())
 
 	mux.HandleFunc("/login", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -200,6 +202,20 @@ func main() {
 
 	//PRODUCTION END
 
+	//SEED DB
+	time.Sleep(5000 * time.Millisecond)
+	var c int32
+	err = database.Db.QueryRow("select count(id) as c from users").Scan(&c)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if c == 0 {
+		_, err := database.Db.Exec("INSERT INTO users (username, first_name, last_name, bg_color, color, email) VALUES (?, ?, ?, ?, ?, ?)", "lordpuma", "Tomáš", "Korený", "#000000", "#FFFFFF", "")
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	log.Fatal(http.ListenAndServe(":8080", handler))
 
 }
@@ -247,4 +263,61 @@ func randToken() string {
 	b := make([]byte, 16)
 	rand.Read(b)
 	return fmt.Sprintf("%x", b)
+}
+
+func main() {
+	db, err := sql.Open("mysql", "root:pass@/database")
+	if err != nil {
+		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
+	}
+	defer db.Close()
+	database.Connect(db)
+
+	fields := graphql.Fields{
+		"user": &graphql.Field{
+			Type: Types.UserType,
+			Args: graphql.FieldConfigArgument{
+				"id": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadUserById(p.Args["id"].(int)), nil
+			},
+		},
+		"workplace": &graphql.Field{
+			Type: Types.WorkplaceType,
+			Args: graphql.FieldConfigArgument{
+				"id": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadWorkplaceById(p.Args["id"].(int)), nil
+			},
+		},
+
+	}
+
+	rootQuery := graphql.ObjectConfig{Name: "RootQuery", Fields: fields}
+	schemaConfig := graphql.SchemaConfig{Query: graphql.NewObject(rootQuery)}
+	schema, err := graphql.NewSchema(schemaConfig)
+	if err != nil {
+		log.Fatalf("failed to create new schema, error: %v", err)
+	}
+
+	// Query
+	query := `
+		{
+			user(id: 1) {workplaces{id}}
+		}
+	`
+	params := graphql.Params{Schema: schema, RequestString: query}
+	r := graphql.Do(params)
+	if len(r.Errors) > 0 {
+		log.Fatalf("failed to execute graphql operation, errors: %+v", r.Errors)
+	}
+	rJSON, _ := json.Marshal(r)
+	fmt.Printf("%s \n", rJSON) // {“data”:{“hello”:”world”}}
+
 }

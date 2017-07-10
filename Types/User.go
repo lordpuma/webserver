@@ -157,3 +157,89 @@ func LoadUserById(id int) User {
 		Email:     email.String,
 	}
 }
+
+func LoadUsersList() []User {
+	var (
+		username   string
+		email      sql.NullString
+		first_name string
+		last_name  string
+		bg_color   string
+		color      string
+	)
+
+	var r []User
+	var id int32
+	rows, err := database.Db.Query("select id, username, email, first_name, last_name, bg_color, color from users")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		err := rows.Scan(&id, &username, &email, &first_name, &last_name, &bg_color, &color)
+		if err != nil {
+			log.Fatal(err)
+		}
+		r = append(r, User{
+			Id:        int(id),
+			Name:      first_name + " " + last_name,
+			Username:  username,
+			ShortName: string([]rune(first_name)[0]) + ". " + last_name,
+			Color:     color,
+			BgColor:   bg_color,
+			LastName:  last_name,
+			FirstName: first_name,
+			Email:     email.String,
+		})
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return r
+}
+
+func FreeUsers(date string, workplace int) []User {
+	var (
+		id         int
+		username   string
+		email      sql.NullString
+		first_name string
+		last_name  string
+		bg_color   string
+		color      string
+	)
+	var r []User
+	rows, err := database.Db.Query("SELECT id, username, email, first_name, last_name, bg_color, color "+
+		"FROM users "+
+		"WHERE id NOT IN (SELECT user_id FROM vacations WHERE date = ?) "+
+		"AND id IN (SELECT user_id FROM users_workplaces WHERE workplace_id = ?) "+
+		"AND id NOT IN (SELECT user_id FROM shifts WHERE date = ? AND workplace_id = ?)", date, workplace, date, workplace)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		err := rows.Scan(&id, &username, &email, &first_name, &last_name, &bg_color, &color)
+		if err != nil {
+			log.Fatal(err)
+		}
+		r = append(r, User{
+			Id:        int(id),
+			Name:      first_name + " " + last_name,
+			Username:  username,
+			ShortName: string([]rune(first_name)[0]) + ". " + last_name,
+			Color:     color,
+			BgColor:   bg_color,
+			LastName:  last_name,
+			FirstName: first_name,
+			Email:     email.String,
+		})
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return r
+}

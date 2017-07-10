@@ -3,6 +3,7 @@ package Types
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
+	"log"
 )
 
 type Workplace struct {
@@ -84,4 +85,36 @@ func LoadWorkplaceById(id int) Workplace {
 		Color:   color,
 		BgColor: bg_color,
 	}
+}
+
+func LoadWorkplacesList() []Workplace {
+	var r []Workplace
+	var (
+		id       int
+		name     string
+		bg_color string
+		color    string
+	)
+	rows, err := database.Db.Query("select id, name, bg_color, color from workplaces")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		err := rows.Scan(&id, &name, &bg_color, &color)
+		if err != nil {
+			log.Fatal(err)
+		}
+		r = append(r, Workplace{
+			Id:      id,
+			Name:    name,
+			Color:   color,
+			BgColor: bg_color,
+		})
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return r
 }

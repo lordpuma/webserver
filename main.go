@@ -26,6 +26,8 @@ import (
 
 //var executor *graphql.Executor
 
+var schema graphql.Schema
+
 func init() {
 	var err error
 	if err != nil {
@@ -35,7 +37,7 @@ func init() {
 
 func authMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		var id int32
+		var id int
 		if r.Header.Get("token") != "" {
 			err := database.Db.QueryRow("SELECT user_id FROM logins WHERE token = ?", r.Header.Get("token")).Scan(&id)
 			if err != nil {
@@ -61,32 +63,36 @@ func test() http.Handler {
 	})
 }
 
-//func queryHand() http.Handler {
-//	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-//		var v map[string]interface{}
-//		ctx := map[string]interface{}{"user_id": r.Context().Value("user_id")}
-//
-//		body, err := ioutil.ReadAll(r.Body)
-//		if err != nil {
-//			fmt.Fprintf(w, "%s", err)
-//		}
-//		var m interface{}
-//		errr := json.Unmarshal(body, &m)
-//		if errr != nil {
-//			fmt.Fprintf(w, "%s", errr)
-//		}
-//
-//		q := m.(map[string]interface{})["query"].(string)
-//		if m.(map[string]interface{})["variables"] != nil {
-//			v = m.(map[string]interface{})["variables"].(map[string]interface{})
-//		}
-//
-//		result, err := executor.Execute(ctx, q, v, "")
-//		resp, _ := json.Marshal(result)
-//		fmt.Fprintf(w, "%s", resp)
-//
-//	})
-//}
+func queryHand() http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var v map[string]interface{}
+		body, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			fmt.Fprintf(w, "%s", err)
+		}
+		var m interface{}
+		errr := json.Unmarshal(body, &m)
+		if errr != nil {
+			fmt.Fprintf(w, "%s", errr)
+		}
+
+		q := m.(map[string]interface{})["query"].(string)
+
+		if m.(map[string]interface{})["variables"] != nil {
+			v = m.(map[string]interface{})["variables"].(map[string]interface{})
+		}
+
+		params := graphql.Params{Schema: schema, RequestString: q, Context: r.Context(), VariableValues: v}
+		ret := graphql.Do(params)
+		if len(ret.Errors) > 0 {
+			log.Fatalf("failed to execute graphql operation, errors: %+v", ret.Errors)
+		}
+
+		resp, _ := json.Marshal(ret)
+		fmt.Fprintf(w, "%s", resp)
+
+	})
+}
 func main1() {
 	//r := resolvers.GetResolvers()
 	var err error
@@ -204,7 +210,7 @@ func main1() {
 
 	//SEED DB
 	time.Sleep(5000 * time.Millisecond)
-	var c int32
+	var c int
 	err = database.Db.QueryRow("select count(id) as c from users").Scan(&c)
 	if err != nil {
 		log.Fatal(err)
@@ -274,50 +280,515 @@ func main() {
 	database.Connect(db)
 
 	fields := graphql.Fields{
+		"thisUser": &graphql.Field{
+			Type: Types.UserType,
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadUserById(p.Context.Value("user_id").(int)), nil
+			},
+		},
 		"user": &graphql.Field{
 			Type: Types.UserType,
 			Args: graphql.FieldConfigArgument{
-				"id": &graphql.ArgumentConfig{
-					Type: graphql.Int,
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
 				},
 			},
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-				return Types.LoadUserById(p.Args["id"].(int)), nil
+				return Types.LoadUserById(p.Args["Id"].(int)), nil
+			},
+		},
+		"users": &graphql.Field{
+			Type: graphql.NewList(Types.UserType),
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadUsersList(), nil
 			},
 		},
 		"workplace": &graphql.Field{
 			Type: Types.WorkplaceType,
 			Args: graphql.FieldConfigArgument{
-				"id": &graphql.ArgumentConfig{
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadWorkplaceById(p.Args["Id"].(int)), nil
+			},
+		},
+		"workplaces": &graphql.Field{
+			Type: graphql.NewList(Types.WorkplaceType),
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadWorkplacesList(), nil
+			},
+		},
+		"shift": &graphql.Field{
+			Type: Types.ShiftType,
+			Args: graphql.FieldConfigArgument{
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.LoadShiftById(p.Args["Id"].(int)), nil
+			},
+		},
+		"shifts": &graphql.Field{
+			Type: graphql.NewList(Types.ShiftType),
+			Args: graphql.FieldConfigArgument{
+				"Date": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.String),
+				},
+				"Workplace": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+				"User": &graphql.ArgumentConfig{
 					Type: graphql.Int,
 				},
 			},
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-				return Types.LoadWorkplaceById(p.Args["id"].(int)), nil
+				workplace, isWOK := p.Args["Workplace"].(int)
+				date, isDOK := p.Args["Date"].(string)
+				user, isUOK := p.Args["User"].(int)
+				if isDOK && isWOK {
+					return Types.LoadShiftsByWorkplace(date, workplace), nil
+				}
+				if isUOK && isWOK {
+					return Types.LoadShiftsByUser(date, user), nil
+				}
+				return nil, nil
 			},
 		},
+		"freeUsers": &graphql.Field{
+			Type: graphql.NewList(Types.UserType),
+			Args: graphql.FieldConfigArgument{
+				"Date": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.String),
+				},
+				"Workplace": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return Types.FreeUsers(p.Args["Date"].(string), p.Args["Workplace"].(int)), nil
+			},
+		},
+	}
 
+	mutations := graphql.Fields{
+		"editUser": &graphql.Field{
+			Type: Types.UserType,
+			Args: graphql.FieldConfigArgument{
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+				"Username": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"FirstName": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"LastName": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"BgColor": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Color": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Email": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Password": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Perms": &graphql.ArgumentConfig{
+					Type: graphql.NewList(graphql.String),
+				},
+				"Workplaces": &graphql.ArgumentConfig{
+					Type: graphql.NewList(graphql.Int),
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				if p.Args["Username"] != nil {
+					_, err := database.Db.Exec("UPDATE users SET username = ? WHERE id = ?", p.Args["Username"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["FirstName"] != nil {
+					_, err := database.Db.Exec("UPDATE users SET first_name = ? WHERE id = ?", p.Args["FirstName"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["LastName"] != nil {
+					_, err := database.Db.Exec("UPDATE users SET last_name = ? WHERE id = ?", p.Args["LastName"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["BgColor"] != nil {
+					_, err := database.Db.Exec("UPDATE users SET bg_color = ? WHERE id = ?", p.Args["BgColor"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["Color"] != nil {
+					_, err := database.Db.Exec("UPDATE users SET color = ? WHERE id = ?", p.Args["Color"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["Email"] != nil {
+					_, err := database.Db.Exec("UPDATE users SET email = ? WHERE id = ?", p.Args["Email"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["Password"] != nil {
+					if p.Args["Password"] == "1" {
+						_, err := database.Db.Exec("UPDATE users SET pass = NULL WHERE id = ?", p.Args["Id"].(int))
+						if err != nil {
+							return nil, err
+						}
+					} else {
+						h := md5.New()
+						io.WriteString(h, p.Args["Password"].(string))
+						pass := new(bytes.Buffer)
+						fmt.Fprintf(pass, "%x", h.Sum(nil)) //cast pass hash to var
+						_, err := database.Db.Exec("UPDATE users SET pass = ? WHERE id = ?", pass.String(), p.Args["Id"].(int))
+						if err != nil {
+							return nil, err
+						}
+					}
+				}
+				if p.Args["Perms"] != nil {
+					database.Db.Exec("DELETE FROM perms WHERE user_id = ?", p.Args["Id"].(int))
+					for _, value := range p.Args["Perms"].([]interface{}) {
+						database.Db.Exec("INSERT INTO perms (user_id, perm) VALUES (?, ?)", p.Args["Id"].(int), value)
+					}
+				}
+				if p.Args["Workplaces"] != nil {
+					database.Db.Exec("DELETE FROM users_workplaces WHERE user_id = ?", p.Args["Id"].(int))
+					for _, value := range p.Args["Workplaces"].([]interface{}) {
+						database.Db.Exec("INSERT INTO users_workplaces (user_id, workplace_id) VALUES (?, ?)", p.Args["Id"].(int), value)
+					}
+				}
+				return Types.LoadUserById(p.Args["Id"].(int)), nil
+			},
+		},
+		"insertUser": &graphql.Field{
+			Type: Types.UserType,
+			Args: graphql.FieldConfigArgument{
+				"Username": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"FirstName": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"LastName": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"BgColor": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Color": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Email": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Password": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Perms": &graphql.ArgumentConfig{
+					Type: graphql.NewList(graphql.String),
+				},
+				"Workplaces": &graphql.ArgumentConfig{
+					Type: graphql.NewList(Types.WorkplaceType),
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				var email string
+				var (
+					out sql.Result
+					err error
+				)
+				username := strings.ToLower(p.Args["Username"].(string))
+				if p.Args["Email"] == nil {
+					out, err = database.Db.Exec("INSERT INTO users (username, first_name, last_name, bg_color, color, email) VALUES (?, ?, ?, ?, ?, ?)", username, p.Args["FirstName"].(string), p.Args["LastName"].(string), p.Args["BgColor"].(string), p.Args["Color"].(string), nil)
+				} else {
+					email = p.Args["Email"].(string)
+					out, err = database.Db.Exec("INSERT INTO users (username, first_name, last_name, bg_color, color, email) VALUES (?, ?, ?, ?, ?, ?)", username, p.Args["FirstName"].(string), p.Args["LastName"].(string), p.Args["BgColor"].(string), p.Args["Color"].(string), email)
+				}
+				if err != nil {
+					return nil, err
+				}
+				id, er := out.LastInsertId()
+				if er != nil {
+					return nil, err
+				}
+				if p.Args["Perms"] != nil {
+					for _, value := range p.Args["Perms"].([]interface{}) {
+						database.Db.Exec("INSERT INTO perms (user_id, perm) VALUES (?, ?)", id, value)
+						if err != nil {
+							return nil, err
+						}
+					}
+				}
+				if p.Args["Workplaces"] != nil {
+
+					for _, value := range p.Args["Workplaces"].([]interface{}) {
+						database.Db.Exec("INSERT INTO users_workplaces (user_id, workplace_id) VALUES (?, ?)", id, value)
+						if err != nil {
+							return nil, err
+						}
+					}
+				}
+				return Types.LoadUserById(int(id)), nil
+			},
+		},
+		"editWorkplace": &graphql.Field{
+			Type: Types.WorkplaceType,
+			Args: graphql.FieldConfigArgument{
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+				"Name": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"BgColor": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Color": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				if p.Args["Name"] != nil {
+					_, err := database.Db.Exec("UPDATE workplaces SET name = ? WHERE id = ?", p.Args["Name"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["BgColor"] != nil {
+					_, err := database.Db.Exec("UPDATE workplaces SET bg_color = ? WHERE id = ?", p.Args["BgColor"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["Color"] != nil {
+					_, err := database.Db.Exec("UPDATE workplaces SET color = ? WHERE id = ?", p.Args["Color"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				return Types.LoadWorkplaceById(p.Args["Id"].(int)), nil
+			},
+		},
+		"insertWorkplace": &graphql.Field{
+			Type: Types.WorkplaceType,
+			Args: graphql.FieldConfigArgument{
+				"Name": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"BgColor": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Color": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				out, err := database.Db.Exec("INSERT INTO workplaces (name, bg_color, color) VALUES (?, ?, ?)", p.Args["Name"].(string), p.Args["BgColor"].(string), p.Args["Color"].(string))
+				if err != nil {
+					return nil, err
+				}
+				id, er := out.LastInsertId()
+				if er != nil {
+					return nil, err
+				}
+				return Types.LoadWorkplaceById(int(id)), nil
+			},
+		},
+		"insertShift": &graphql.Field{
+			Type: Types.ShiftType,
+			Args: graphql.FieldConfigArgument{
+				"Userid": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+				"Workplaceid": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+				"Note": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Date": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				if p.Args["Note"] == nil {
+					p.Args["Note"] = ' '
+				}
+				out, err := database.Db.Exec("INSERT INTO shifts (user_id, workplace_id, date, note) VALUES (?, ?, ?, ?)", p.Args["Userid"].(int), p.Args["Workplaceid"].(int), p.Args["Date"], p.Args["Note"])
+				if err != nil {
+					return nil, err
+				}
+				id, _ := out.LastInsertId()
+				return Types.LoadShiftById(int(id)), nil
+			},
+		},
+		"editShift": &graphql.Field{
+			Type: Types.ShiftType,
+			Args: graphql.FieldConfigArgument{
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+				"Userid": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+				"Workplaceid": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+				"Note": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+				"Date": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				if p.Args["Userid"] != nil {
+					_, err := database.Db.Exec("UPDATE shifts SET user_id = ? WHERE id = ?", p.Args["Userid"].(int), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["Workplaceid"] != nil {
+					_, err := database.Db.Exec("UPDATE shifts SET workplace_id = ? WHERE id = ?", p.Args["Workplaceid"].(int), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				if p.Args["Note"] != nil {
+					_, err := database.Db.Exec("UPDATE shifts SET note = ? WHERE id = ?", p.Args["Note"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				}
+				return Types.LoadShiftById(p.Args["Id"].(int)), nil
+			},
+		},
+		"deleteShift": &graphql.Field{
+			Type: Types.ShiftType,
+			Args: graphql.FieldConfigArgument{
+				"Id": &graphql.ArgumentConfig{
+					Type: graphql.NewNonNull(graphql.Int),
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				out, err := database.Db.Exec("DELETE FROM shifts WHERE id = ?", p.Args["Id"].(int))
+				if err != nil {
+					return nil, err
+				}
+				id, _ := out.LastInsertId()
+				return id, nil
+			},
+		},
 	}
 
 	rootQuery := graphql.ObjectConfig{Name: "RootQuery", Fields: fields}
-	schemaConfig := graphql.SchemaConfig{Query: graphql.NewObject(rootQuery)}
-	schema, err := graphql.NewSchema(schemaConfig)
+	rootMutation := graphql.ObjectConfig{Name: "RootMutation", Fields: mutations}
+	schemaConfig := graphql.SchemaConfig{Query: graphql.NewObject(rootQuery), Mutation: graphql.NewObject(rootMutation)}
+	schema, err = graphql.NewSchema(schemaConfig)
 	if err != nil {
 		log.Fatalf("failed to create new schema, error: %v", err)
 	}
 
-	// Query
-	query := `
-		{
-			user(id: 1) {workplaces{id}}
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write(page)
+	}))
+
+	mux.Handle("/query", authMiddleware(queryHand()))
+
+	mux.HandleFunc("/login", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		body, err := ioutil.ReadAll(r.Body)
+		var m interface{}
+		err = json.Unmarshal(body, &m)
+
+		if m != nil {
+			if m.(map[string]interface{})["pass"] != nil && m.(map[string]interface{})["user"] != nil {
+				h := md5.New()
+				io.WriteString(h, m.(map[string]interface{})["pass"].(string))
+				var username string
+				var pass sql.NullString
+				var id []uint8
+				rows, err := database.Db.Query("select id, username, pass from users")
+				if err != nil {
+					log.Fatal(err)
+				}
+				defer rows.Close()
+				for rows.Next() {
+					err := rows.Scan(&id, &username, &pass)
+					if err != nil {
+						log.Fatal(err)
+					}
+					if strings.ToLower(m.(map[string]interface{})["user"].(string)) == strings.ToLower(username) {
+						token := randToken()
+						if pass.Valid {
+							passhash := new(bytes.Buffer)
+							fmt.Fprintf(passhash, "%x", h.Sum(nil)) //cast pass hash to var
+							if passhash.String() == pass.String {
+								_, err := database.Db.Exec("INSERT INTO logins (user_id, token) VALUES (?, ?)", id, token) //Save Token to db
+								if err != nil {
+									panic(err)
+								}
+								resp, err := json.Marshal(map[string]interface{}{"token": token})
+								w.Write(resp) //USER IS LOGIN, send him token
+								return
+							}
+						} else {
+							_, err := database.Db.Exec("INSERT INTO logins (user_id, token) VALUES (?, ?)", id, token) //Save Token to db
+							if err != nil {
+								panic(err)
+							}
+							resp, err := json.Marshal(map[string]interface{}{"token": token, "first": true})
+							w.Write(resp) //USER IS LOGIN, send him token
+							return
+						}
+
+					}
+				}
+				err = rows.Err()
+				resp, err := json.Marshal(map[string]interface{}{"error": "unknown-user-or-pass"})
+				w.Write(resp)
+				return
+			}
 		}
-	`
-	params := graphql.Params{Schema: schema, RequestString: query}
-	r := graphql.Do(params)
-	if len(r.Errors) > 0 {
-		log.Fatalf("failed to execute graphql operation, errors: %+v", r.Errors)
-	}
-	rJSON, _ := json.Marshal(r)
-	fmt.Printf("%s \n", rJSON) // {“data”:{“hello”:”world”}}
+		resp, err := json.Marshal(map[string]interface{}{"error": err})
+		w.Write(resp)
+	}))
+
+	mux.HandleFunc("/logout", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("token") != "" {
+			_, err := database.Db.Exec("DELETE FROM logins WHERE token = ?", r.Header.Get("token")) //delete token
+			if err != nil {
+				panic(err)
+			}
+			resp, _ := json.Marshal(map[string]interface{}{"success": true})
+			w.Write(resp)
+		} else {
+			resp, _ := json.Marshal(map[string]interface{}{"error": "no_header"})
+			w.Write(resp)
+		}
+
+	}))
+
+	handler := cors.AllowAll().Handler(mux)
+
+	log.Fatal(http.ListenAndServe(":8080", handler))
 
 }

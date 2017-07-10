@@ -3,16 +3,16 @@ version: '2'
 
 services:
   goserver:
-      name: intraner_webserver
-      build: ./server
-      environment:
-        - VIRTUAL_HOST=iapi.lempls.com
-        - VIRTUAL_PORT=80
-        - LETSENCRYPT_HOST=iapi.lempls.com
-        - LETSENCRYPT_EMAIL=flamecze@gmail.com
-      networks:
-           - default
-           - web-net
+    container_name: intraner_webserver
+    build: ./server
+    environment:
+      - VIRTUAL_HOST=iapi.lempls.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=iapi.lempls.com
+      - LETSENCRYPT_EMAIL=flamecze@gmail.com
+    networks:
+         - default
+         - web-net
 
 networks:
   default:

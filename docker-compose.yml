@@ -3,8 +3,7 @@ version: '2'
 
 services:
   goserver:
-      depends_on:
-        - db
+      name: intraner_webserver
       build: ./server
       environment:
         - VIRTUAL_HOST=iapi.lempls.com
@@ -14,19 +13,6 @@ services:
       networks:
            - default
            - web-net
-
-
-  db:
-    image: mariadb
-    volumes:
-     - ./db:/var/lib/mysql
-    environment:
-     - MYSQL_ROOT_PASSWORD=password
-     - MYSQL_DATABASE=database
-    networks:
-     - default
-    ports:
-     - 3306:3306
 
 networks:
   default:

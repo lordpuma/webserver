@@ -1,10 +1,35 @@
 version: '2'
 
+
 services:
-  mysql:
+  goserver:
+      depends_on:
+        - db
+      build: ./server
+      environment:
+        - VIRTUAL_HOST=iapi.lempls.com
+        - VIRTUAL_PORT=80
+        - LETSENCRYPT_HOST=iapi.lempls.com
+        - LETSENCRYPT_EMAIL=flamecze@gmail.com
+      networks:
+           - default
+           - web-net
+
+
+  db:
     image: mariadb
-    container_name: test-mysql
-    ports:
-      - 3306:3306
+    volumes:
+     - ./db:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: "pass"
+     - MYSQL_ROOT_PASSWORD=password
+     - MYSQL_DATABASE=database
+    networks:
+     - default
+    ports:
+     - 3306:3306
+
+networks:
+  default:
+  web-net:
+    external:
+      name: web-net

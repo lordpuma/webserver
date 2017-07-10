@@ -2,8 +2,8 @@ version: '2'
 
 services:
   goserver:
-    container_name: intraner_webserver
-    build: ./server
+    container_name: intranet_webserver
+    build: .
     environment:
       - VIRTUAL_HOST=iapi.lempls.com
       - VIRTUAL_PORT=80

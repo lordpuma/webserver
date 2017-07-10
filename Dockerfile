@@ -1,7 +1,7 @@
 FROM golang:1.8
 
 WORKDIR /go/src/app
-COPY . .
+COPY main.go main.go
 
 RUN go-wrapper download   # "go get -d -v ./..."
 RUN go-wrapper install    # "go install -v ./..."

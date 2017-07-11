@@ -13,6 +13,7 @@ import (
 	//"github.com/lordpuma/webserver/resolvers"
 	//"github.com/playlyfe/go-graphql"
 	"github.com/graphql-go/graphql"
+	_ "github.com/joho/godotenv/autoload"
 
 	"github.com/lordpuma/webserver/Types"
 	"github.com/rs/cors"
@@ -20,6 +21,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 )
@@ -272,7 +274,8 @@ func randToken() string {
 }
 
 func main() {
-	db, err := sql.Open("mysql", "root:pass@/database")
+	db, err := sql.Open("mysql", os.Getenv("DB"))
+	//db, err := sql.Open("mysql", "root:pass@/database")
 	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
@@ -682,7 +685,7 @@ func main() {
 			},
 		},
 		"deleteShift": &graphql.Field{
-			Type: Types.ShiftType,
+			Type: graphql.Int,
 			Args: graphql.FieldConfigArgument{
 				"Id": &graphql.ArgumentConfig{
 					Type: graphql.NewNonNull(graphql.Int),
@@ -790,7 +793,7 @@ func main() {
 
 	handler := cors.AllowAll().Handler(mux)
 
-	//log.Fatal(http.ListenAndServe(":8080", handler))
-	log.Fatal(http.ListenAndServe(":80", handler))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handler))
+	//log.Fatal(http.ListenAndServe(":80", handler))
 
 }

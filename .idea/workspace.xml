@@ -18,11 +18,15 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="283" column="24" lean-forward="true" selection-start-line="283" selection-start-column="24" selection-end-line="283" selection-end-column="24" />
+            <state relative-caret-position="0">
+              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
               <folding>
-                <element signature="e#14#469#0" expanded="true" />
-                <marker date="1499783918261" expanded="true" signature="191:270" ph="/.../" />
+                <marker date="1499786064351" expanded="true" signature="191:270" ph="/.../" />
+                <marker date="1499786064351" expanded="true" signature="2343:2498" ph="/.../" />
+                <marker date="1499786064351" expanded="true" signature="2962:3107" ph="/.../" />
+                <marker date="1499786064351" expanded="true" signature="5658:5831" ph="/.../" />
+                <marker date="1499786064351" expanded="true" signature="5881:6155" ph="/.../" />
+                <marker date="1499786064351" expanded="true" signature="8127:8251" ph="/.../" />
               </folding>
             </state>
           </provider>
@@ -956,7 +960,8 @@
     <MESSAGE value="Changed graphql library" />
     <MESSAGE value="Changed graphql library - DONE" />
     <MESSAGE value="Docker up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Docker up" />
+    <MESSAGE value="Parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1195,20 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="48" lean-forward="true" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Types/Shift.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1245,13 +1236,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <marker date="1499702432829" expanded="true" signature="9:12" ph="2" />
+            <marker date="1499702432829" expanded="true" signature="14:303" ph="services: &lt;1 key&gt;" />
+            <marker date="1499702432829" expanded="true" signature="26:303" ph="goserver: &lt;4 keys&gt;" />
+            <marker date="1499702432829" expanded="true" signature="56:74" ph="intranet_webserver" />
+            <marker date="1499702432829" expanded="true" signature="92:251" ph="environment: &lt;4 items&gt;" />
+            <marker date="1499702432829" expanded="true" signature="113:141" ph="VIRTUAL_H…lempls.com" />
+            <marker date="1499702432829" expanded="true" signature="150:165" ph="VIRTUAL_PORT=80" />
+            <marker date="1499702432829" expanded="true" signature="174:206" ph="LETSENCRY…lempls.com" />
+            <marker date="1499702432829" expanded="true" signature="215:251" ph="LETSENCRY…@gmail.com" />
+            <marker date="1499702432829" expanded="true" signature="256:303" ph="networks: &lt;2 items&gt;" />
+            <marker date="1499702432829" expanded="true" signature="277:284" ph="default" />
+            <marker date="1499702432829" expanded="true" signature="296:303" ph="web-net" />
+            <marker date="1499702432829" expanded="true" signature="305:370" ph="networks: &lt;2 keys&gt;" />
+            <marker date="1499702432829" expanded="true" signature="328:370" ph="web-net: &lt;1 key&gt;" />
+            <marker date="1499702432829" expanded="true" signature="341:370" ph="external: &lt;1 key&gt;" />
+            <marker date="1499702432829" expanded="true" signature="363:370" ph="web-net" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="283" column="24" lean-forward="true" selection-start-line="283" selection-start-column="24" selection-end-line="283" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
-            <element signature="e#14#469#0" expanded="true" />
-            <marker date="1499783918261" expanded="true" signature="191:270" ph="/.../" />
+            <marker date="1499786064351" expanded="true" signature="191:270" ph="/.../" />
+            <marker date="1499786064351" expanded="true" signature="2343:2498" ph="/.../" />
+            <marker date="1499786064351" expanded="true" signature="2962:3107" ph="/.../" />
+            <marker date="1499786064351" expanded="true" signature="5658:5831" ph="/.../" />
+            <marker date="1499786064351" expanded="true" signature="5881:6155" ph="/.../" />
+            <marker date="1499786064351" expanded="true" signature="8127:8251" ph="/.../" />
           </folding>
         </state>
       </provider>

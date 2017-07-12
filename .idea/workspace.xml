@@ -18,16 +18,16 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="797" column="34" lean-forward="false" selection-start-line="797" selection-start-column="34" selection-end-line="797" selection-end-column="34" />
+            <state relative-caret-position="540">
+              <caret line="289" column="35" lean-forward="true" selection-start-line="289" selection-start-column="35" selection-end-line="289" selection-end-column="35" />
               <folding>
                 <element signature="e#14#461#0" expanded="true" />
-                <marker date="1499848594986" expanded="true" signature="191:270" ph="/.../" />
-                <marker date="1499848594986" expanded="true" signature="2345:2500" ph="/.../" />
-                <marker date="1499848594986" expanded="true" signature="2964:3109" ph="/.../" />
-                <marker date="1499848594986" expanded="true" signature="5660:5833" ph="/.../" />
-                <marker date="1499848594986" expanded="true" signature="5883:6157" ph="/.../" />
-                <marker date="1499848594986" expanded="true" signature="8129:8253" ph="/.../" />
+                <marker date="1499849594276" expanded="true" signature="191:270" ph="/.../" />
+                <marker date="1499849594276" expanded="true" signature="2345:2500" ph="/.../" />
+                <marker date="1499849594276" expanded="true" signature="2964:3109" ph="/.../" />
+                <marker date="1499849594276" expanded="true" signature="5660:5833" ph="/.../" />
+                <marker date="1499849594276" expanded="true" signature="5883:6157" ph="/.../" />
+                <marker date="1499849594276" expanded="true" signature="8131:8253" ph="/.../" />
               </folding>
             </state>
           </provider>
@@ -1174,16 +1174,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="797" column="34" lean-forward="false" selection-start-line="797" selection-start-column="34" selection-end-line="797" selection-end-column="34" />
+        <state relative-caret-position="540">
+          <caret line="289" column="35" lean-forward="true" selection-start-line="289" selection-start-column="35" selection-end-line="289" selection-end-column="35" />
           <folding>
             <element signature="e#14#461#0" expanded="true" />
-            <marker date="1499848594986" expanded="true" signature="191:270" ph="/.../" />
-            <marker date="1499848594986" expanded="true" signature="2345:2500" ph="/.../" />
-            <marker date="1499848594986" expanded="true" signature="2964:3109" ph="/.../" />
-            <marker date="1499848594986" expanded="true" signature="5660:5833" ph="/.../" />
-            <marker date="1499848594986" expanded="true" signature="5883:6157" ph="/.../" />
-            <marker date="1499848594986" expanded="true" signature="8129:8253" ph="/.../" />
+            <marker date="1499849594276" expanded="true" signature="191:270" ph="/.../" />
+            <marker date="1499849594276" expanded="true" signature="2345:2500" ph="/.../" />
+            <marker date="1499849594276" expanded="true" signature="2964:3109" ph="/.../" />
+            <marker date="1499849594276" expanded="true" signature="5660:5833" ph="/.../" />
+            <marker date="1499849594276" expanded="true" signature="5883:6157" ph="/.../" />
+            <marker date="1499849594276" expanded="true" signature="8131:8253" ph="/.../" />
           </folding>
         </state>
       </provider>

@@ -275,9 +275,9 @@ func randToken() string {
 }
 
 func main() {
-	db, err := sql.Open("mysql", os.Getenv("DB"))
+	//db, err := sql.Open("mysql", os.Getenv("DB"))
 	//db, err := sql.Open("mysql", "root:pass@/database")
-	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
+	db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
 	}

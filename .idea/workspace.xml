@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd60a770-58d7-4734-a7f7-c33b2e73ee88" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
     </list>
@@ -18,16 +19,19 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="289" column="35" lean-forward="true" selection-start-line="289" selection-start-column="35" selection-end-line="289" selection-end-column="35" />
+            <state relative-caret-position="539">
+              <caret line="284" column="41" lean-forward="true" selection-start-line="284" selection-start-column="41" selection-end-line="284" selection-end-column="41" />
               <folding>
-                <element signature="e#14#461#0" expanded="true" />
-                <marker date="1499849594276" expanded="true" signature="191:270" ph="/.../" />
-                <marker date="1499849594276" expanded="true" signature="2345:2500" ph="/.../" />
-                <marker date="1499849594276" expanded="true" signature="2964:3109" ph="/.../" />
-                <marker date="1499849594276" expanded="true" signature="5660:5833" ph="/.../" />
-                <marker date="1499849594276" expanded="true" signature="5883:6157" ph="/.../" />
-                <marker date="1499849594276" expanded="true" signature="8131:8253" ph="/.../" />
+                <element signature="e#14#422#0" expanded="true" />
+                <marker date="1499849852149" expanded="true" signature="191:270" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="1230:1407" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="2234:6609" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="2306:2461" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="2925:3070" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="5621:5794" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="5844:6118" ph="/.../" />
+                <marker date="1499849852149" expanded="true" signature="8069:8104" ph="{...}" />
+                <marker date="1499849852149" expanded="true" signature="8344:8468" ph="/.../" />
               </folding>
             </state>
           </provider>
@@ -86,6 +90,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/conf.json" />
       </list>
     </option>
   </component>
@@ -899,13 +904,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resolvers/resolvers.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
@@ -1172,18 +1170,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/conf.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="1" />
+          <folding>
+            <marker date="1499849887746" expanded="true" signature="0:51" ph="{&quot;Db&quot;: &quot;root:pass@/database&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="289" column="35" lean-forward="true" selection-start-line="289" selection-start-column="35" selection-end-line="289" selection-end-column="35" />
+        <state relative-caret-position="539">
+          <caret line="284" column="41" lean-forward="true" selection-start-line="284" selection-start-column="41" selection-end-line="284" selection-end-column="41" />
           <folding>
-            <element signature="e#14#461#0" expanded="true" />
-            <marker date="1499849594276" expanded="true" signature="191:270" ph="/.../" />
-            <marker date="1499849594276" expanded="true" signature="2345:2500" ph="/.../" />
-            <marker date="1499849594276" expanded="true" signature="2964:3109" ph="/.../" />
-            <marker date="1499849594276" expanded="true" signature="5660:5833" ph="/.../" />
-            <marker date="1499849594276" expanded="true" signature="5883:6157" ph="/.../" />
-            <marker date="1499849594276" expanded="true" signature="8131:8253" ph="/.../" />
+            <element signature="e#14#422#0" expanded="true" />
+            <marker date="1499849852149" expanded="true" signature="191:270" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="1230:1407" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="2234:6609" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="2306:2461" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="2925:3070" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="5621:5794" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="5844:6118" ph="/.../" />
+            <marker date="1499849852149" expanded="true" signature="8069:8104" ph="{...}" />
+            <marker date="1499849852149" expanded="true" signature="8344:8468" ph="/.../" />
           </folding>
         </state>
       </provider>

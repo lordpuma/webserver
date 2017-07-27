@@ -522,7 +522,7 @@ func main() {
 					Type: graphql.NewList(graphql.String),
 				},
 				"Workplaces": &graphql.ArgumentConfig{
-					Type: graphql.NewList(Types.WorkplaceType),
+					Type: graphql.NewList(graphql.Int),
 				},
 			},
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {

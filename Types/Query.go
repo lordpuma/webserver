@@ -120,6 +120,7 @@ var RootQuery = graphql.Fields{
 					}
 					var needle *Day
 					var found = false
+					fmt.Printf("Shift %d\n", id)
 					for _, v := range days {
 						if v.Day == day {
 							needle = &v
@@ -128,23 +129,23 @@ var RootQuery = graphql.Fields{
 					}
 					if !found {
 						fmt.Printf("day %d not found\n", day)
-						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
+						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
 					} else {
 						fmt.Printf("day %d found\n", day)
 						var n *W
 						var f = false
-						for _, v := range needle.Workplace {
-							if v.Id == workplace_id {
-								n = &v
+						for _, ve := range needle.Workplace {
+							if ve.Id == workplace_id {
+								n = &ve
 								f = true
 							}
 						}
 						if !f {
 							fmt.Printf("- workplace %d not found\n", workplace_id)
-							needle.Workplace = append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
+							needle.Workplace = append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
 						} else {
 							fmt.Printf("- workplace %d found\n", workplace_id)
-							n.Shifts = append(n.Shifts, Shift{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
+							n.Shifts = append(n.Shifts, Shift{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
 						}
 					}
 

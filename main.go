@@ -293,9 +293,12 @@ func main() {
 
 	//db, err := sql.Open("mysql", configuration.Db)
 	//db, err := sql.Open("mysql", "root:pass@/database")
-	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
-
-	db, err := sql.Open("mysql", u.User.String()+"@tcp("+u.Host+")/"+u.Path)
+	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")fm
+	hostUrl := ""
+	if (u.Host) != "" {
+		hostUrl = "@tcp(" + u.Host + ")"
+	}
+	db, err := sql.Open(u.Scheme, u.User.String()+hostUrl+u.Path)
 	//db, err := sql.Open("mysql", "p47wwkjhfxv7ojua:fkk9kiipy87rqsgc@tcp(kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306)/dcxpotdd70hbhroq")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic

@@ -133,7 +133,7 @@ var RootQuery = graphql.Fields{
 						fmt.Println(days)
 					} else {
 						fmt.Printf("day %d found\n", day)
-						fmt.Println(needle)
+						fmt.Println(*needle)
 						var n *W
 						var f = false
 						for _, ve := range needle.Workplace {
@@ -144,11 +144,11 @@ var RootQuery = graphql.Fields{
 						}
 						if !f {
 							fmt.Printf("- workplace %d not found\n", workplace_id)
-							needle.Workplace = append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
+							needle.&Workplace = &append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
 							fmt.Println(needle.Workplace)
 						} else {
 							fmt.Printf("- workplace %d found\n", workplace_id)
-							n.Shifts = append(n.Shifts, Shift{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
+							n.&Shifts = &append(n.Shifts, Shift{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
 							fmt.Println(n.Shifts)
 						}
 					}

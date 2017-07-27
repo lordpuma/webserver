@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd60a770-58d7-4734-a7f7-c33b2e73ee88" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Types/Mutation.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Types/Query.go" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resolvers/resolvers.go" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
     </list>
@@ -21,8 +18,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="166" column="33" lean-forward="true" selection-start-line="166" selection-start-column="33" selection-end-line="166" selection-end-column="33" />
+            <state relative-caret-position="565">
+              <caret line="235" column="0" lean-forward="true" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
               <folding>
                 <element signature="e#14#351#0" expanded="true" />
               </folding>
@@ -853,7 +850,9 @@
     <MESSAGE value="godep" />
     <MESSAGE value="godep test" />
     <MESSAGE value="godep test2" />
-    <option name="LAST_COMMIT_MESSAGE" value="godep test2" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="Cleanup?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1276,8 +1275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="166" column="33" lean-forward="true" selection-start-line="166" selection-start-column="33" selection-end-line="166" selection-end-column="33" />
+        <state relative-caret-position="565">
+          <caret line="235" column="0" lean-forward="true" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
           <folding>
             <element signature="e#14#351#0" expanded="true" />
           </folding>

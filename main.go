@@ -220,14 +220,16 @@ func main() {
 
 	}))
 
-	//handler := cors.New(cors.Options{
-	//	AllowedOrigins: []string{"localhost", "https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com"},
-	//	AllowedMethods: []string{"GET", "POST"},
-	//	AllowedHeaders: []string{"access-control-allow-origin"},
-	//}).Handler(mux)
+	//TODO: Why is this not working ffs?
+	corsMiddleware := cors.New(cors.Options{
+		AllowedOrigins: []string{"localhost", "https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com"},
+		AllowedMethods: []string{"GET", "POST"},
+		AllowedHeaders: []string{"access-control-allow-origin"},
+	})
 
-	handler := cors.AllowAll().Handler(mux)
+	//handler := cors.New(corsMiddleware.Handler).Handler(mux)
+	//handler := cors.AllowAll().Handler(mux)
 
-	log.Fatal(http.ListenAndServe(":"+port, handler))
+	log.Fatal(http.ListenAndServe(":"+port, corsMiddleware.Handler(mux)))
 
 }

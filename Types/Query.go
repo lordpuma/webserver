@@ -1,6 +1,7 @@
 package Types
 
 import (
+	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
 	"log"
@@ -129,6 +130,7 @@ var RootQuery = graphql.Fields{
 				if err != nil {
 					log.Fatal(err)
 				}
+				fmt.Println(days)
 				return days, nil
 			}
 			return nil, nil

@@ -1,0 +1,76 @@
+{
+	"ImportPath": "github.com/lordpuma/webserver",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.3-26-g8fefef0",
+			"Rev": "8fefef06da7707b5a3cda42195a6b409c9c9ab5c"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/gqlerrors",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/ast",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/kinds",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/lexer",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/location",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/parser",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/printer",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/source",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/typeInfo",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/graphql-go/graphql/language/visitor",
+			"Comment": "v0.5.0-79-gfe52096",
+			"Rev": "fe52096df4714b0c66bd7921ade11c976acb51a2"
+		},
+		{
+			"ImportPath": "github.com/rs/cors",
+			"Comment": "v1.0-5-g8dd4211",
+			"Rev": "8dd4211afb5d08dbb39a533b9bb9e4b486351df6"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "973f3f3bbd50e92b13faa6c53ec16f49b45e851c"
+		}
+	]
+}

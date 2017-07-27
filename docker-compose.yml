@@ -2,7 +2,7 @@ version: '2'
 
 services:
   goserver:
-    container_name: intranet_webserver
+    container_name: intranet_backend
     build: .
     environment:
       - VIRTUAL_HOST=iapi.lempls.com
@@ -10,11 +10,9 @@ services:
       - LETSENCRYPT_HOST=iapi.lempls.com
       - LETSENCRYPT_EMAIL=flamecze@gmail.com
     networks:
-         - default
          - web-net
 
 networks:
-  default:
   web-net:
     external:
       name: web-net

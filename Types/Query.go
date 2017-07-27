@@ -1,8 +1,6 @@
 package Types
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
 	"log"
@@ -89,7 +87,7 @@ var RootQuery = graphql.Fields{
 	},
 
 	"allShifts": &graphql.Field{
-		Type: graphql.String,
+		Type: graphql.NewList(DayType),
 		Args: graphql.FieldConfigArgument{
 			"Date": &graphql.ArgumentConfig{
 				Type: graphql.NewNonNull(graphql.String),
@@ -101,36 +99,57 @@ var RootQuery = graphql.Fields{
 				workplace_id int
 				user_id      int
 				day          int
+				d            string
+				note         string
 			)
-			var days = make(map[int]map[int][]Res)
+			var days []Day
 
 			date, isDOK := p.Args["Date"].(string)
 
 			if isDOK {
-				rows, err := database.Db.Query("SELECT id, user_id, workplace_id, DATE_FORMAT(date, '%e') AS day FROM shifts WHERE DATE_FORMAT(date, '%Y-%m') = ? ORDER BY day, workplace_id", date)
+				rows, err := database.Db.Query("SELECT id, workplace_id, user_id, date, note, DATE_FORMAT(date, '%e') AS day FROM shifts WHERE DATE_FORMAT(date, '%Y-%m') = ? ORDER BY day, workplace_id", date)
 				if err != nil {
 					log.Fatal(err)
 				}
 				defer rows.Close()
 				for rows.Next() {
-					err := rows.Scan(&id, &user_id, &workplace_id, &day)
+					err := rows.Scan(&id, &workplace_id, &user_id, &d, &note, &day)
 					if err != nil {
 						log.Fatal(err)
 					}
-					if days[day] == nil {
-						log.Printf("day %d is nil", day)
-						days[day] = make(map[int][]Res)
+					var needle *Day
+					var found = false
+					for _, v := range days {
+						if v.Day == day {
+							needle = &v
+							found = true
+						}
 					}
-					days[day][workplace_id] = append(days[day][workplace_id], Res{user_id, id})
+					if !found {
+						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
+					} else {
+						var n *W
+						var f = false
+						for _, v := range needle.Workplace {
+							if v.Id == workplace_id {
+								n = &v
+								f = true
+							}
+						}
+						if !f {
+							needle.Workplace = append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
+						} else {
+							n.Shifts = append(n.Shifts, Shift{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
+						}
+					}
+
 				}
 				err = rows.Err()
 				if err != nil {
 					log.Fatal(err)
 				}
-				fmt.Println(days)
-				out, _ := json.Marshal(days)
-				fmt.Println(string(out))
-				return string(out), nil
+
+				return days, nil
 			}
 			return nil, nil
 		},
@@ -156,21 +175,50 @@ type Res struct {
 	Id      int
 }
 
-//var AllShiftsType = graphql.NewObject(graphql.ObjectConfig{
-//	Name:        "AllShiftsType",
-//	Description: "Basic Workplace Object",
-//	Fields: graphql.Fields{
-//		"id": &graphql.Field{
-//			Type: graphql.Int,
-//			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-//				return p.Source.(Res).Id, nil
-//			},
-//		},
-//		"user_id": &graphql.Field{
-//			Type: graphql.Int,
-//			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-//				return p.Source.(Res).User_id, nil
-//			},
-//		},
-//	},
-//})
+type W struct {
+	Id     int
+	Shifts []Shift
+}
+
+type Day struct {
+	Day       int
+	Workplace []W
+}
+
+var WType = graphql.NewObject(graphql.ObjectConfig{
+	Name:        "WType",
+	Description: "Basic Workplace Object",
+	Fields: graphql.Fields{
+		"Id": &graphql.Field{
+			Type: graphql.NewList(ShiftType),
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return p.Source.(W).Id, nil
+			},
+		},
+		"Shifts": &graphql.Field{
+			Type: graphql.NewList(ShiftType),
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return p.Source.(W).Shifts, nil
+			},
+		},
+	},
+})
+
+var DayType = graphql.NewObject(graphql.ObjectConfig{
+	Name:        "WType",
+	Description: "Basic Workplace Object",
+	Fields: graphql.Fields{
+		"Day": &graphql.Field{
+			Type: graphql.NewList(ShiftType),
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return p.Source.(Day).Day, nil
+			},
+		},
+		"Workplaces": &graphql.Field{
+			Type: graphql.NewList(ShiftType),
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return p.Source.(Day).Workplace, nil
+			},
+		},
+	},
+})

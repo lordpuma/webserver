@@ -18,10 +18,10 @@
       <file leaf-file-name="Query.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Types/Query.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="91" column="42" lean-forward="true" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
+            <state relative-caret-position="459">
+              <caret line="115" column="33" lean-forward="false" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
               <folding>
-                <element signature="e#15#114#0" expanded="true" />
+                <element signature="e#15#131#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1465,10 +1465,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Types/Shift.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+          <folding>
+            <marker date="1499677899497" expanded="true" signature="22:107" ph="..." />
+            <marker date="1499677899497" expanded="true" signature="127:226" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="282:1230" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="366:1227" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="390:524" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="477:519" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="550:700" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="634:695" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="731:896" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="820:891" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="922:1058" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1009:1053" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1084:1223" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1174:1218" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1266:1646" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1273:1363" ph="(...)" />
+            <marker date="1499677899497" expanded="true" signature="1525:1542" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1556:1644" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1711:2308" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="1733:1816" ph="(...)" />
+            <marker date="1499677899497" expanded="true" signature="1971:1992" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2030:2241" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2104:2127" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2149:2237" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2275:2296" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2361:2765" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2368:2451" ph="(...)" />
+            <marker date="1499677899497" expanded="true" signature="2635:2661" ph="{...}" />
+            <marker date="1499677899497" expanded="true" signature="2675:2763" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/graphql-go/graphql/definition.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="1207" column="5" lean-forward="false" selection-start-line="1207" selection-start-column="5" selection-end-line="1207" selection-end-column="5" />
+        <state relative-caret-position="479">
+          <caret line="621" column="5" lean-forward="false" selection-start-line="621" selection-start-column="5" selection-end-line="621" selection-end-column="5" />
           <folding>
             <marker date="1501164758986" expanded="false" signature="24:130" ph="..." />
             <marker date="1501164758986" expanded="true" signature="217:289" ph="{...}" />
@@ -1693,50 +1731,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Types/Shift.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
-          <folding>
-            <marker date="1499677899497" expanded="true" signature="22:107" ph="..." />
-            <marker date="1499677899497" expanded="true" signature="127:226" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="282:1230" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="366:1227" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="390:524" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="477:519" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="550:700" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="634:695" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="731:896" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="820:891" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="922:1058" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1009:1053" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1084:1223" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1174:1218" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1266:1646" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1273:1363" ph="(...)" />
-            <marker date="1499677899497" expanded="true" signature="1525:1542" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1556:1644" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1711:2308" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="1733:1816" ph="(...)" />
-            <marker date="1499677899497" expanded="true" signature="1971:1992" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2030:2241" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2104:2127" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2149:2237" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2275:2296" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2361:2765" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2368:2451" ph="(...)" />
-            <marker date="1499677899497" expanded="true" signature="2635:2661" ph="{...}" />
-            <marker date="1499677899497" expanded="true" signature="2675:2763" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Types/Query.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="91" column="42" lean-forward="true" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
+        <state relative-caret-position="459">
+          <caret line="115" column="33" lean-forward="false" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
           <folding>
-            <element signature="e#15#114#0" expanded="true" />
+            <element signature="e#15#131#0" expanded="true" />
           </folding>
         </state>
       </provider>

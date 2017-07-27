@@ -1,6 +1,7 @@
 package Types
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
@@ -88,7 +89,7 @@ var RootQuery = graphql.Fields{
 	},
 
 	"allShifts": &graphql.Field{
-		Type: graphql.NewList(AllShiftsType),
+		Type: graphql.String,
 		Args: graphql.FieldConfigArgument{
 			"Date": &graphql.ArgumentConfig{
 				Type: graphql.NewNonNull(graphql.String),
@@ -120,10 +121,6 @@ var RootQuery = graphql.Fields{
 						log.Printf("day %d is nil", day)
 						days[day] = make(map[int][]Res)
 					}
-					//if days[day][workplace_id] == nil {
-					//	log.Printf("workplace %d is nil", workplace_id)
-					//	days[day][workplace_id] = []Res
-					//}
 					days[day][workplace_id] = append(days[day][workplace_id], Res{user_id, id})
 				}
 				err = rows.Err()
@@ -131,7 +128,7 @@ var RootQuery = graphql.Fields{
 					log.Fatal(err)
 				}
 				fmt.Println(days)
-				return days, nil
+				return json.Marshal(days), nil
 			}
 			return nil, nil
 		},
@@ -157,21 +154,21 @@ type Res struct {
 	Id      int
 }
 
-var AllShiftsType = graphql.NewObject(graphql.ObjectConfig{
-	Name:        "AllShiftsType",
-	Description: "Basic Workplace Object",
-	Fields: graphql.Fields{
-		"id": &graphql.Field{
-			Type: graphql.Int,
-			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-				return p.Source.(Res).Id, nil
-			},
-		},
-		"user_id": &graphql.Field{
-			Type: graphql.Int,
-			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-				return p.Source.(Res).User_id, nil
-			},
-		},
-	},
-})
+//var AllShiftsType = graphql.NewObject(graphql.ObjectConfig{
+//	Name:        "AllShiftsType",
+//	Description: "Basic Workplace Object",
+//	Fields: graphql.Fields{
+//		"id": &graphql.Field{
+//			Type: graphql.Int,
+//			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+//				return p.Source.(Res).Id, nil
+//			},
+//		},
+//		"user_id": &graphql.Field{
+//			Type: graphql.Int,
+//			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+//				return p.Source.(Res).User_id, nil
+//			},
+//		},
+//	},
+//})

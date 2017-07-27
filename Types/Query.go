@@ -1,6 +1,10 @@
 package Types
 
-import "github.com/graphql-go/graphql"
+import (
+	"github.com/graphql-go/graphql"
+	"github.com/lordpuma/webserver/database"
+	"log"
+)
 
 var RootQuery = graphql.Fields{
 	"thisUser": &graphql.Field{
@@ -54,6 +58,7 @@ var RootQuery = graphql.Fields{
 			return LoadShiftById(p.Args["Id"].(int)), nil
 		},
 	},
+
 	"shifts": &graphql.Field{
 		Type: graphql.NewList(ShiftType),
 		Args: graphql.FieldConfigArgument{
@@ -80,6 +85,47 @@ var RootQuery = graphql.Fields{
 			return nil, nil
 		},
 	},
+
+	"allShifts": &graphql.Field{
+		Type: graphql.NewList(graphql.NewList(AllShiftsType)),
+		Args: graphql.FieldConfigArgument{
+			"Date": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.String),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			var (
+				id           int
+				workplace_id int
+				user_id      int
+				day          int
+			)
+			var days map[int]map[int][]interface{}
+
+			date, isDOK := p.Args["Date"].(string)
+
+			if isDOK {
+				rows, err := database.Db.Query("SELECT id, user_id, workplace_id, DATE_FORMAT(date, '%e') AS day FROM shifts WHERE DATE_FORMAT(date, '%Y-%m') = ? ORDER BY day, workplace_id", date)
+				if err != nil {
+					log.Fatal(err)
+				}
+				defer rows.Close()
+				for rows.Next() {
+					err := rows.Scan(&id, &workplace_id, &user_id, &day)
+					if err != nil {
+						log.Fatal(err)
+					}
+					days[day][workplace_id] = append(days[day][workplace_id], Res{user_id, id})
+				}
+				err = rows.Err()
+				if err != nil {
+					log.Fatal(err)
+				}
+				return days, nil
+			}
+			return nil, nil
+		},
+	},
 	"freeUsers": &graphql.Field{
 		Type: graphql.NewList(UserType),
 		Args: graphql.FieldConfigArgument{
@@ -95,3 +141,27 @@ var RootQuery = graphql.Fields{
 		},
 	},
 }
+
+type Res struct {
+	User_id int
+	Id      int
+}
+
+var AllShiftsType = graphql.NewObject(graphql.ObjectConfig{
+	Name:        "AllShiftsType",
+	Description: "Basic Workplace Object",
+	Fields: graphql.Fields{
+		"id": &graphql.Field{
+			Type: graphql.Int,
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return p.Source.(Res).Id, nil
+			},
+		},
+		"user_id": &graphql.Field{
+			Type: graphql.Int,
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				return p.Source.(Res).User_id, nil
+			},
+		},
+	},
+})

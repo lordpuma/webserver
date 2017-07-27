@@ -226,7 +226,7 @@ func main() {
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: true,
 	})
-
+	fmt.Println("APP FUCKING INITIALIZED!")
 	log.Fatal(http.ListenAndServe(":"+port, c.Handler(mux)))
 
 }

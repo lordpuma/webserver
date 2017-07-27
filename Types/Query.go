@@ -112,7 +112,7 @@ var RootQuery = graphql.Fields{
 				}
 				defer rows.Close()
 				for rows.Next() {
-					err := rows.Scan(&id, &workplace_id, &user_id, &day)
+					err := rows.Scan(&id, &user_id, &workplace_id, &day)
 					if err != nil {
 						log.Fatal(err)
 					}

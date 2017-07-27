@@ -18,10 +18,11 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="235" column="0" lean-forward="true" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+            <state relative-caret-position="378">
+              <caret line="224" column="38" lean-forward="true" selection-start-line="224" selection-start-column="38" selection-end-line="224" selection-end-column="38" />
               <folding>
                 <element signature="e#14#351#0" expanded="true" />
+                <marker date="1501188164542" expanded="true" signature="5945:6046" ph="/.../" />
               </folding>
             </state>
           </provider>
@@ -165,6 +166,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".realize" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -850,9 +865,9 @@
     <MESSAGE value="godep" />
     <MESSAGE value="godep test" />
     <MESSAGE value="godep test2" />
-    <MESSAGE value="Cleanup" />
     <MESSAGE value="Cleanup?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup?" />
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -861,7 +876,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/server.go" />
     <entry file="file://$USER_HOME$/go/src/github.com/neelance/graphql-go/example/starwars/starwars.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4743">
@@ -1273,12 +1287,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.realize/realize.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <marker date="1501186208911" expanded="true" signature="0:168" ph="settings: &lt;2 keys&gt;" />
+            <marker date="1501186208911" expanded="true" signature="12:89" ph="resources: &lt;3 keys&gt;" />
+            <marker date="1501186208911" expanded="true" signature="36:47" ph="outputs.log" />
+            <marker date="1501186208911" expanded="true" signature="58:66" ph="logs.log" />
+            <marker date="1501186208911" expanded="true" signature="79:89" ph="errors.log" />
+            <marker date="1501186208911" expanded="true" signature="92:168" ph="server: &lt;4 keys&gt;" />
+            <marker date="1501186208911" expanded="true" signature="112:117" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="128:133" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="144:153" ph="localhost" />
+            <marker date="1501186208911" expanded="true" signature="164:168" ph="5001" />
+            <marker date="1501186208911" expanded="true" signature="169:478" ph="projects: &lt;1 item&gt;" />
+            <marker date="1501186208911" expanded="true" signature="187:196" ph="webserver" />
+            <marker date="1501186208911" expanded="true" signature="214:218" ph="true" />
+            <marker date="1501186208911" expanded="true" signature="231:236" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="245:250" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="258:262" ph="true" />
+            <marker date="1501186208911" expanded="true" signature="272:277" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="285:289" ph="true" />
+            <marker date="1501186208911" expanded="true" signature="292:389" ph="watcher: &lt;4 keys&gt;" />
+            <marker date="1501186208911" expanded="true" signature="314:319" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="324:338" ph="paths: &lt;1 item&gt;" />
+            <marker date="1501186208911" expanded="true" signature="343:369" ph="ignore_paths: &lt;1 item&gt;" />
+            <marker date="1501186208911" expanded="true" signature="363:369" ph="vendor" />
+            <marker date="1501186208911" expanded="true" signature="374:389" ph="exts: &lt;1 item&gt;" />
+            <marker date="1501186208911" expanded="true" signature="386:389" ph=".go" />
+            <marker date="1501186208911" expanded="true" signature="392:478" ph="streams: &lt;4 keys&gt;" />
+            <marker date="1501186208911" expanded="true" signature="414:418" ph="true" />
+            <marker date="1501186208911" expanded="true" signature="433:438" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="453:458" ph="false" />
+            <marker date="1501186208911" expanded="true" signature="473:478" ph="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="235" column="0" lean-forward="true" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="224" column="38" lean-forward="true" selection-start-line="224" selection-start-column="38" selection-end-line="224" selection-end-column="38" />
           <folding>
             <element signature="e#14#351#0" expanded="true" />
+            <marker date="1501188164542" expanded="true" signature="5945:6046" ph="/.../" />
           </folding>
         </state>
       </provider>

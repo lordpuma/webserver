@@ -190,7 +190,7 @@ var WType = graphql.NewObject(graphql.ObjectConfig{
 	Description: "Basic Workplace Object",
 	Fields: graphql.Fields{
 		"Id": &graphql.Field{
-			Type: graphql.NewList(ShiftType),
+			Type: graphql.Int,
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
 				return p.Source.(W).Id, nil
 			},
@@ -205,17 +205,17 @@ var WType = graphql.NewObject(graphql.ObjectConfig{
 })
 
 var DayType = graphql.NewObject(graphql.ObjectConfig{
-	Name:        "WType",
+	Name:        "DayType",
 	Description: "Basic Workplace Object",
 	Fields: graphql.Fields{
 		"Day": &graphql.Field{
-			Type: graphql.NewList(ShiftType),
+			Type: graphql.Int,
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
 				return p.Source.(Day).Day, nil
 			},
 		},
 		"Workplaces": &graphql.Field{
-			Type: graphql.NewList(ShiftType),
+			Type: graphql.NewList(WType),
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
 				return p.Source.(Day).Workplace, nil
 			},

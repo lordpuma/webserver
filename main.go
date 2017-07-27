@@ -806,6 +806,6 @@ func main() {
 	handler := cors.AllowAll().Handler(mux)
 
 	//log.Fatal(http.ListenAndServe(":"+configuration.Port, handler))
-	log.Fatal(http.ListenAndServe(":80", handler))
+	log.Fatal(http.ListenAndServe(":" + port, handler))
 
 }

@@ -88,7 +88,7 @@ var RootQuery = graphql.Fields{
 	},
 
 	"allShifts": &graphql.Field{
-		Type: graphql.NewList(graphql.NewList(AllShiftsType)),
+		Type: graphql.NewList(AllShiftsType),
 		Args: graphql.FieldConfigArgument{
 			"Date": &graphql.ArgumentConfig{
 				Type: graphql.NewNonNull(graphql.String),

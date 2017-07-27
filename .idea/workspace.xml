@@ -18,8 +18,8 @@
       <file leaf-file-name="Query.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Types/Query.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="123" column="71" lean-forward="true" selection-start-line="123" selection-start-column="71" selection-end-line="123" selection-end-column="71" />
+            <state relative-caret-position="282">
+              <caret line="91" column="42" lean-forward="true" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
               <folding>
                 <element signature="e#15#114#0" expanded="true" />
               </folding>
@@ -871,7 +871,8 @@
     <MESSAGE value="Cleanup final" />
     <MESSAGE value="AllShifts" />
     <MESSAGE value="    AllShifts" />
-    <option name="LAST_COMMIT_MESSAGE" value="    AllShifts" />
+    <MESSAGE value="        AllShifts" />
+    <option name="LAST_COMMIT_MESSAGE" value="        AllShifts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1732,8 +1733,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Types/Query.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="123" column="71" lean-forward="true" selection-start-line="123" selection-start-column="71" selection-end-line="123" selection-end-column="71" />
+        <state relative-caret-position="282">
+          <caret line="91" column="42" lean-forward="true" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
           <folding>
             <element signature="e#15#114#0" expanded="true" />
           </folding>

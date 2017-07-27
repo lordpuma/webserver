@@ -115,6 +115,9 @@ var RootQuery = graphql.Fields{
 					if err != nil {
 						log.Fatal(err)
 					}
+					if days[day] == nil {
+						days[day] = make(map[int][]interface{})
+					}
 					days[day][workplace_id] = append(days[day][workplace_id], Res{user_id, id})
 				}
 				err = rows.Err()

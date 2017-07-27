@@ -123,7 +123,7 @@ var RootQuery = graphql.Fields{
 					fmt.Printf("Shift %d\n", id)
 					for _, v := range days {
 						if v.Day == day {
-							needle = &v
+							*needle = v
 							found = true
 						}
 					}
@@ -138,14 +138,12 @@ var RootQuery = graphql.Fields{
 						var f = false
 						for _, ve := range needle.Workplace {
 							if ve.Id == workplace_id {
-								n = &ve
+								*n = ve
 								f = true
 							}
 						}
 						if !f {
 							fmt.Printf("- workplace %d not found\n", workplace_id)
-							fmt.Println(needle.Workplace)
-							fmt.Println(&needle.Workplace)
 							needle.Workplace = append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
 							fmt.Println(needle.Workplace)
 						} else {

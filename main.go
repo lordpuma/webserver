@@ -20,9 +20,9 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
-	"net/url"
 )
 
 //var executor *graphql.Executor
@@ -291,12 +291,11 @@ func main() {
 		panic(err)
 	}
 
-
 	//db, err := sql.Open("mysql", configuration.Db)
 	//db, err := sql.Open("mysql", "root:pass@/database")
 	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
 
-	db, err := sql.Open(u.Scheme, u.User.String() + "@tcp(" + u.Host +")/" + u.Path)
+	db, err := sql.Open("mysql", u.User.String()+"@tcp("+u.Host+")/"+u.Path)
 	//db, err := sql.Open("mysql", "p47wwkjhfxv7ojua:fkk9kiipy87rqsgc@tcp(kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306)/dcxpotdd70hbhroq")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
@@ -820,6 +819,6 @@ func main() {
 		port = "80"
 	}
 	//log.Fatal(http.ListenAndServe(":"+configuration.Port, handler))
-	log.Fatal(http.ListenAndServe(":" + port, handler))
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 
 }

@@ -1,11 +1,5 @@
-FROM golang:1.8
-
-WORKDIR /go/src/app
-COPY main.go main.go
-
-RUN go-wrapper download   # "go get -d -v ./..."
-RUN go-wrapper install    # "go install -v ./..."
-
+FROM scratch
+ADD ca-certificates.crt /etc/ssl/certs/
+ADD main /
 EXPOSE 80
-
-CMD ["go-wrapper", "run"] # ["app"]
+CMD ["/main"]

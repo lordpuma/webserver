@@ -275,7 +275,7 @@ func randToken() string {
 
 func main() {
 	type Configuration struct {
-		Port    string
+		Port string
 		Db   string
 	}
 

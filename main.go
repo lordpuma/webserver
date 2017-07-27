@@ -220,7 +220,13 @@ func main() {
 
 	}))
 
-	handler := cors.New(cors.Options{AllowedOrigins: []string{"localhost", "https://intranet-c2bbb.firebaseapp.com", "http://intranet.lempls.com"}, AllowedMethods: []string{"GET", "POST"}}).Handler(mux)
+	//handler := cors.New(cors.Options{
+	//	AllowedOrigins: []string{"localhost", "https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com"},
+	//	AllowedMethods: []string{"GET", "POST"},
+	//	AllowedHeaders: []string{"access-control-allow-origin"},
+	//}).Handler(mux)
+
+	handler := cors.AllowAll().Handler(mux)
 
 	log.Fatal(http.ListenAndServe(":"+port, handler))
 

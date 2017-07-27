@@ -22,6 +22,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"net/url"
 )
 
 //var executor *graphql.Executor
@@ -274,22 +275,29 @@ func randToken() string {
 }
 
 func main() {
-	type Configuration struct {
-		Port string
-		Db   string
+
+	// We'll parse this example URL, which includes a
+	// scheme, authentication info, host, port, path,
+	// query params, and query fragment.
+	s := os.Getenv("JAWSDB_URL")
+
+	if s == "" {
+		s = "mysql://root:pass@/database"
 	}
 
-	file, _ := os.Open("conf.json")
-	decoder := json.NewDecoder(file)
-	configuration := Configuration{}
-	err := decoder.Decode(&configuration)
+	// Parse the URL and ensure there are no errors.
+	u, err := url.Parse(s)
 	if err != nil {
-		fmt.Println("error:", err)
+		panic(err)
 	}
+
+
 	//db, err := sql.Open("mysql", configuration.Db)
 	//db, err := sql.Open("mysql", "root:pass@/database")
 	//db, err := sql.Open("mysql", "root:password@tcp(db:3306)/database")
-	db, err := sql.Open("mysql", "p47wwkjhfxv7ojua:fkk9kiipy87rqsgc@tcp(kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306)/dcxpotdd70hbhroq")
+
+	db, err := sql.Open(u.Scheme, u.User.String() + "@tcp(" + u.Host +")/" + u.Path)
+	//db, err := sql.Open("mysql", "p47wwkjhfxv7ojua:fkk9kiipy87rqsgc@tcp(kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306)/dcxpotdd70hbhroq")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
 	}

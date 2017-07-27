@@ -116,14 +116,14 @@ var RootQuery = graphql.Fields{
 					if err != nil {
 						log.Fatal(err)
 					}
-					if days[day] == nil {
-						log.Printf("day %d is nil", day)
-						days[day] = make(map[int][]Res)
-					}
-					if days[day][workplace_id] == nil {
-						log.Printf("workplace %d is nil", workplace_id)
-						days[day][workplace_id] = []Res{}
-					}
+					//if days[day] == nil {
+					//	log.Printf("day %d is nil", day)
+					//	days[day] = make(map[int][]Res)
+					//}
+					//if days[day][workplace_id] == nil {
+					//	log.Printf("workplace %d is nil", workplace_id)
+					//	days[day][workplace_id] = []Res
+					//}
 					days[day][workplace_id] = append(days[day][workplace_id], Res{user_id, id})
 				}
 				err = rows.Err()

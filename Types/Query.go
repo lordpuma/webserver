@@ -100,7 +100,7 @@ var RootQuery = graphql.Fields{
 				user_id      int
 				day          int
 			)
-			var days map[int]map[int][]interface{}
+			var days map[int]map[int][]Res
 
 			date, isDOK := p.Args["Date"].(string)
 
@@ -116,7 +116,10 @@ var RootQuery = graphql.Fields{
 						log.Fatal(err)
 					}
 					if days[day] == nil {
-						days[day] = make(map[int][]interface{})
+						days[day] = make(map[int][]Res)
+					}
+					if days[day][workplace_id] == nil {
+						days[day][workplace_id] = []Res{}
 					}
 					days[day][workplace_id] = append(days[day][workplace_id], Res{user_id, id})
 				}

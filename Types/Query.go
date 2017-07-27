@@ -1,6 +1,7 @@
 package Types
 
 import (
+	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
 	"log"
@@ -126,8 +127,10 @@ var RootQuery = graphql.Fields{
 						}
 					}
 					if !found {
+						fmt.Printf("day %d not found", day)
 						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
 					} else {
+						fmt.Printf("day %d found", day)
 						var n *W
 						var f = false
 						for _, v := range needle.Workplace {
@@ -137,8 +140,10 @@ var RootQuery = graphql.Fields{
 							}
 						}
 						if !f {
+							fmt.Printf("- workplace %d not found", workplace_id)
 							needle.Workplace = append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})
 						} else {
+							fmt.Printf("- workplace %d found", workplace_id)
 							n.Shifts = append(n.Shifts, Shift{Id: id, Date: date, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
 						}
 					}

@@ -100,7 +100,7 @@ var RootQuery = graphql.Fields{
 				user_id      int
 				day          int
 			)
-			var days map[int]map[int][]Res
+			var days = make(map[int]map[int][]Res)
 
 			date, isDOK := p.Args["Date"].(string)
 

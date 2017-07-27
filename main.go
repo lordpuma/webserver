@@ -805,6 +805,11 @@ func main() {
 
 	handler := cors.AllowAll().Handler(mux)
 
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "80"
+	}
 	//log.Fatal(http.ListenAndServe(":"+configuration.Port, handler))
 	log.Fatal(http.ListenAndServe(":" + port, handler))
 

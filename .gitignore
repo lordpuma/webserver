@@ -16,3 +16,5 @@
 .glide/
 .env
 conf.json
+.idea
+.realize

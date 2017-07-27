@@ -129,8 +129,8 @@ var RootQuery = graphql.Fields{
 				}
 				fmt.Println(days)
 				out, _ := json.Marshal(days)
-				fmt.Println(out)
-				return out, nil
+				fmt.Println(string(out))
+				return string(out), nil
 			}
 			return nil, nil
 		},

@@ -1,13 +1,13 @@
 package Types
 
 import (
+	"bytes"
+	"crypto/md5"
+	"database/sql"
+	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
-	"crypto/md5"
 	"io"
-	"bytes"
-	"fmt"
-	"database/sql"
 	"strings"
 )
 

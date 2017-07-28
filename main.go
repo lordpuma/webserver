@@ -121,10 +121,10 @@ func main() {
 
 	hostUrl := ""
 	if (u.Host) != "" {
-		hostUrl = "@tcp(" + u.Host + ")"
+		hostUrl = "tcp(" + u.Host + ")"
 	}
 
-	db, err := sql.Open(u.Scheme, u.User.String()+hostUrl+u.Path)
+	db, err := sql.Open(u.Scheme, u.User.String()+"@"+hostUrl+u.Path)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -221,7 +221,7 @@ func main() {
 	}))
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"localhost", "https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com"},
+		AllowedOrigins:   []string{"https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com", "http://localhost:4200"},
 		AllowedMethods:   []string{"GET", "POST", "PUT"},
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: true,

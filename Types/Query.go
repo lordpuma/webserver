@@ -1,7 +1,6 @@
 package Types
 
 import (
-	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
 	"log"
@@ -104,9 +103,7 @@ var RootQuery = graphql.Fields{
 				note         string
 			)
 			var days []Day
-
 			date, isDOK := p.Args["Date"].(string)
-
 			if isDOK {
 				rows, err := database.Db.Query("SELECT id, workplace_id, user_id, date, note, DATE_FORMAT(date, '%e') AS day FROM shifts WHERE DATE_FORMAT(date, '%Y-%m') = ? ORDER BY day, workplace_id", date)
 				if err != nil {
@@ -120,7 +117,6 @@ var RootQuery = graphql.Fields{
 					}
 					var needle *Day
 					var found = false
-					fmt.Printf("Shift %d\n", id)
 					for k, v := range days {
 						if v.Day == day {
 							needle = &days[k]
@@ -128,12 +124,8 @@ var RootQuery = graphql.Fields{
 						}
 					}
 					if !found {
-						fmt.Printf("day %d not found\n", day)
 						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
-						fmt.Println(days)
 					} else {
-						fmt.Printf("day %d found\n", day)
-						fmt.Println(*needle)
 						var n *W
 						var f = false
 						for ke, ve := range needle.Workplace {
@@ -143,15 +135,11 @@ var RootQuery = graphql.Fields{
 							}
 						}
 						if !f {
-							fmt.Printf("- workplace %d not found\n", workplace_id)
 							*needle = Day{needle.Day,
-								append(needle.Workplace, W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})}
-							fmt.Println(needle.Workplace)
+								append(needle.Workplace,
+									W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})}
 						} else {
-							fmt.Printf("- workplace %d found\n", workplace_id)
 							*n = W{n.Id, append(n.Shifts, Shift{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})}
-							//n.Shifts = append(n.Shifts, Shift{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)})
-							fmt.Println(n.Shifts)
 						}
 					}
 

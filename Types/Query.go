@@ -121,9 +121,9 @@ var RootQuery = graphql.Fields{
 					var needle *Day
 					var found = false
 					fmt.Printf("Shift %d\n", id)
-					for _, v := range days {
+					for k, v := range days {
 						if v.Day == day {
-							needle = &v
+							needle = &days[k]
 							found = true
 						}
 					}
@@ -136,9 +136,9 @@ var RootQuery = graphql.Fields{
 						fmt.Println(*needle)
 						var n *W
 						var f = false
-						for _, ve := range needle.Workplace {
+						for ke, ve := range needle.Workplace {
 							if ve.Id == workplace_id {
-								n = &ve
+								n = &needle.Workplace[ke]
 								f = true
 							}
 						}

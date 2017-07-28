@@ -18,11 +18,11 @@
       <file leaf-file-name="Query.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Types/Query.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="141" column="24" lean-forward="true" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+            <state relative-caret-position="564">
+              <caret line="146" column="44" lean-forward="true" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
               <folding>
                 <element signature="e#15#114#0" expanded="true" />
-                <marker date="1501200129379" expanded="true" signature="5203:5680" ph="/.../" />
+                <marker date="1501200328665" expanded="true" signature="5228:5705" ph="/.../" />
               </folding>
             </state>
           </provider>
@@ -2033,11 +2033,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Types/Query.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="141" column="24" lean-forward="true" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+        <state relative-caret-position="564">
+          <caret line="146" column="44" lean-forward="true" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
           <folding>
             <element signature="e#15#114#0" expanded="true" />
-            <marker date="1501200129379" expanded="true" signature="5203:5680" ph="/.../" />
+            <marker date="1501200328665" expanded="true" signature="5228:5705" ph="/.../" />
           </folding>
         </state>
       </provider>

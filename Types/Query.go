@@ -116,25 +116,25 @@ var RootQuery = graphql.Fields{
 						log.Fatal(err)
 					}
 					var needle *Day
-					var found = false
+					//var found = false
 					for k, v := range days {
 						if v.Day == day {
 							needle = &days[k]
-							found = true
+							//found = true
 						}
 					}
-					if !found {
+					if needle != nil {
 						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
 					} else {
 						var n *W
-						var f = false
+						//var f = false
 						for ke, ve := range needle.Workplace {
 							if ve.Id == workplace_id {
 								n = &needle.Workplace[ke]
-								f = true
+								//f = true
 							}
 						}
-						if !f {
+						if n != nil {
 							*needle = Day{needle.Day,
 								append(needle.Workplace,
 									W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})}

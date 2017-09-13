@@ -249,6 +249,63 @@ var RootMutation = graphql.Fields{
 			return LoadWorkplaceById(int(id)), nil
 		},
 	},
+	"editRace": &graphql.Field{
+		Type: RaceType,
+		Args: graphql.FieldConfigArgument{
+			"Id": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+			"Name": &graphql.ArgumentConfig{
+				Type: graphql.String,
+			},
+			"Active": &graphql.ArgumentConfig{
+				Type: graphql.Boolean,
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			if p.Args["Name"] != nil {
+				_, err := database.Db.Exec("UPDATE races SET name = ? WHERE id = ?", p.Args["Name"].(string), p.Args["Id"].(int))
+				if err != nil {
+					return nil, err
+				}
+			}
+			if p.Args["Active"] != nil {
+				_, err := database.Db.Exec("UPDATE races SET active = ? WHERE id = ?", p.Args["Active"].(string), p.Args["Id"].(int))
+				if err != nil {
+					return nil, err
+				}
+			}
+			return LoadRaceById(p.Args["Id"].(int)), nil
+		},
+	},
+	"insertRace": &graphql.Field{
+		Type: RaceType,
+		Args: graphql.FieldConfigArgument{
+			"Name": &graphql.ArgumentConfig{
+				Type: graphql.String,
+			},
+			"Active": &graphql.ArgumentConfig{
+				Type: graphql.Boolean,
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			if p.Args["Active"].(bool) {
+				_, err := database.Db.Exec("UPDATE races SET active = FALSE")
+				if err != nil {
+					return nil, err
+				}
+			}
+			out, err := database.Db.Exec("INSERT INTO races (name, active) VALUES (?, ?)", p.Args["Name"].(string), p.Args["Active"].(bool))
+			if err != nil {
+				return nil, err
+			}
+			id, er := out.LastInsertId()
+			if er != nil {
+				return nil, err
+			}
+			return LoadRaceById(int(id)), nil
+		},
+	},
 	"insertShift": &graphql.Field{
 		Type: ShiftType,
 		Args: graphql.FieldConfigArgument{
@@ -339,6 +396,44 @@ var RootMutation = graphql.Fields{
 			}
 			id, _ := out.LastInsertId()
 			return id, nil
+		},
+	},
+	"deleteResult": &graphql.Field{
+		Type: graphql.Int,
+		Args: graphql.FieldConfigArgument{
+			"Id": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			out, err := database.Db.Exec("DELETE FROM results WHERE id = ?", p.Args["Id"].(int))
+			if err != nil {
+				return nil, err
+			}
+			id, _ := out.LastInsertId()
+			return id, nil
+		},
+	},
+	"setActiveRace": &graphql.Field{
+		Type: RaceType,
+		Args: graphql.FieldConfigArgument{
+			"Id": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+			"Active": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Boolean),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			_, err := database.Db.Exec("UPDATE races SET active = FALSE")
+			if err != nil {
+				return nil, err
+			}
+			_, err = database.Db.Exec("UPDATE races SET active = ? WHERE id = ?", p.Args["Active"].(bool), p.Args["Id"].(int))
+			if err != nil {
+				return nil, err
+			}
+			return LoadRaceById(p.Args["Id"].(int)), nil
 		},
 	},
 }

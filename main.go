@@ -145,6 +145,24 @@ func main() {
 		w.Write(page)
 	}))
 
+	mux.HandleFunc("/races/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		body, err := ioutil.ReadAll(r.Body)
+		var m []interface{}
+		err = json.Unmarshal(body, &m)
+		fmt.Println(m)
+		var id int
+		database.Db.QueryRow("SELECT id FROM races	 WHERE active = 1 LIMIT 1").Scan(&id)
+		for _, e := range m {
+			_, err := database.Db.Exec("INSERT INTO results (name, time, race_id) VALUES (?, ?, ?)", e.(map[string]interface{})["name"], e.(map[string]interface{})["time"], id)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println(e)
+		}
+		resp, err := json.Marshal(map[string]interface{}{"error": err})
+		w.Write(resp)
+	}))
+
 	mux.Handle("/query", authMiddleware(queryHand()))
 
 	mux.HandleFunc("/login", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

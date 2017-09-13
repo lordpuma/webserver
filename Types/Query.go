@@ -48,6 +48,51 @@ var RootQuery = graphql.Fields{
 			return LoadWorkplacesList(), nil
 		},
 	},
+	"race": &graphql.Field{
+		Type: RaceType,
+		Args: graphql.FieldConfigArgument{
+			"Id": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return LoadRaceById(p.Args["Id"].(int)), nil
+		},
+	},
+	"races": &graphql.Field{
+		Type: graphql.NewList(RaceType),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return LoadRacesList(), nil
+		},
+	},
+	"result": &graphql.Field{
+		Type: ResultType,
+		Args: graphql.FieldConfigArgument{
+			"Id": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return LoadResultById(p.Args["Id"].(int)), nil
+		},
+	},
+	"raceResults": &graphql.Field{
+		Type: graphql.NewList(FormattedResultType),
+		Args: graphql.FieldConfigArgument{
+			"Id": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return LoadResultsByRace(p.Args["Id"].(int)), nil
+		},
+	},
+	"results": &graphql.Field{
+		Type: graphql.NewList(ResultType),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return LoadResultsList(), nil
+		},
+	},
 	"shift": &graphql.Field{
 		Type: ShiftType,
 		Args: graphql.FieldConfigArgument{

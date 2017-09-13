@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd60a770-58d7-4734-a7f7-c33b2e73ee88" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__webserver_.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Types/Query.go" afterPath="$PROJECT_DIR$/Types/Query.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Types/User.go" afterPath="$PROJECT_DIR$/Types/User.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,17 +13,53 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="database@localhost" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="database@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="database" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="database@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="database" type="e3449647:DbNodeDescriptor" />
+        <item name="shifts" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Query.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Types/Query.go">
+      <file leaf-file-name="User.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Types/User.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="136" column="37" lean-forward="true" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+            <state relative-caret-position="544">
+              <caret line="213" column="381" lean-forward="false" selection-start-line="213" selection-start-column="381" selection-end-line="213" selection-end-column="381" />
               <folding>
-                <element signature="e#15#107#0" expanded="true" />
-                <marker date="1502019015958" expanded="true" signature="4765:5242" ph="/.../" />
+                <element signature="e#15#123#0" expanded="true" />
+                <marker date="1505306961233" expanded="true" signature="2171:2211" ph="select perm perms" />
+                <marker date="1505306961233" expanded="true" signature="2766:2865" ph="select id fr... workplaces" />
+                <marker date="1505306961233" expanded="true" signature="2805:2864" ph="select workp... users_workplaces" />
+                <marker date="1505306961233" expanded="true" signature="3442:3528" ph="SELECT usern... users" />
+                <marker date="1505306961233" expanded="true" signature="4156:4233" ph="select id, u... users" />
+                <marker date="1505306961233" expanded="true" signature="4156:4252" ph="select id, u... users" />
+                <marker date="1505306961233" expanded="true" signature="5090:5387" ph="SELECT id, u... users" />
+                <marker date="1505306961233" expanded="true" signature="5090:5432" ph="SELECT id, u... users" />
+                <marker date="1505306961233" expanded="true" signature="5186:5230" ph="SELECT user_... vacations" />
+                <marker date="1505306961233" expanded="true" signature="5245:5304" ph="SELECT user_... users_workplaces" />
+                <marker date="1505306961233" expanded="true" signature="5323:5385" ph="SELECT user_... shifts" />
               </folding>
             </state>
           </provider>
@@ -86,8 +123,8 @@
         <option value="$PROJECT_DIR$/Types/Workplace.go" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/main.go" />
-        <option value="$PROJECT_DIR$/Types/User.go" />
         <option value="$PROJECT_DIR$/Types/Query.go" />
+        <option value="$PROJECT_DIR$/Types/User.go" />
       </list>
     </option>
   </component>
@@ -97,7 +134,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -123,68 +160,18 @@
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Types" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".realize" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="webserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webserver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webserver" type="462c0819:PsiDirectoryNode" />
+              <item name="Types" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
     </panes>
@@ -196,9 +183,11 @@
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;te&#9;ACTION&#9;ActivateTerminalToolWindow&#10;rest&#9;ACTION&#9;WebServicesPlugin.CreateRESTClient&#10;re&#9;ACTION&#9;ActivateRESTClientToolWindow&#10;res&#9;ACTION&#9;ActivateRESTClientToolWindow&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;tea&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="data&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;te&#9;ACTION&#9;ActivateTerminalToolWindow&#10;rest&#9;ACTION&#9;WebServicesPlugin.CreateRESTClient&#10;re&#9;ACTION&#9;ActivateRESTClientToolWindow&#10;res&#9;ACTION&#9;ActivateRESTClientToolWindow&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;tea&#9;null&#9;null" />
     <property name="GO_FMT" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/conf.json" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -724,22 +713,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Docker Deployment.Database">
-    <configuration default="false" name="go run main.go" type="GoRunFileConfiguration" factoryName="Go Single File" temporary="true">
-      <module name="webserver" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/main.go" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Build flaem.go and run" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+  <component name="RunManager">
+    <configuration name="Build flaem.go and run" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="webserver" />
       <working_directory value="$PROJECT_DIR$/" />
       <go_parameters value="-i" />
       <filePath value="$PROJECT_DIR$/flaem.go" />
       <kind value="FILE" />
-      <method />
     </configuration>
-    <configuration default="false" name="Database" type="docker-deploy" factoryName="Docker Deployment" temporary="true" server-name="Docker">
+    <configuration name="Database" type="docker-deploy" factoryName="Docker Deployment" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml" path="$PROJECT_DIR$/docker-compose.yml">
         <settings>
           <option name="JSONFilePath" value="" />
@@ -751,7 +733,6 @@
           </option>
         </settings>
       </deployment>
-      <method />
     </configuration>
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="webserver" />
@@ -759,13 +740,6 @@
       <go_parameters value="-i" />
       <filePath value="$PROJECT_DIR$/" />
       <kind value="FILE" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoRunFileConfiguration" factoryName="Go Single File">
-      <module name="webserver" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <method />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="webserver" />
@@ -773,6 +747,19 @@
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="DIRECTORY" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="GoRunFileConfiguration" factoryName="Go Single File">
+      <module name="webserver" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
@@ -794,15 +781,6 @@
     <configuration default="true" type="docker-deploy" factoryName="Docker Deployment">
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts />
@@ -810,16 +788,20 @@
       <envs />
       <method />
     </configuration>
+    <configuration name="go run main.go" type="GoRunFileConfiguration" factoryName="Go Single File" temporary="true">
+      <module name="webserver" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+    </configuration>
     <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Go Single File.go run main.go" />
-      <item index="1" class="java.lang.String" itemvalue="Go Application.Build flaem.go and run" />
-      <item index="2" class="java.lang.String" itemvalue="Docker Deployment.Database" />
+      <item index="0" class="java.lang.String" itemvalue="Docker Deployment.Database" />
+      <item index="1" class="java.lang.String" itemvalue="Go Single File.go run main.go" />
+      <item index="2" class="java.lang.String" itemvalue="Go Application.Build flaem.go and run" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Docker Deployment.Database" />
-        <item index="1" class="java.lang.String" itemvalue="Go Single File.go run main.go" />
-        <item index="2" class="java.lang.String" itemvalue="Go Application.Build flaem.go and run" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Go Single File.go run main.go" />
+        <item index="1" class="java.lang.String" itemvalue="Go Application.Build flaem.go and run" />
       </list>
     </recent_temporary>
   </component>
@@ -833,11 +815,11 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968128" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32868525" sideWeight="0.69166666" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33683106" sideWeight="0.69166666" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -852,7 +834,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -884,21 +866,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resolvers/resolvers.go" />
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/server.go" />
     <entry file="file://$PROJECT_DIR$/flaem.go" />
     <entry file="file://$PROJECT_DIR$/docker-compose.yml">
@@ -1111,13 +1078,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Types/Mutation.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="96" column="56" lean-forward="false" selection-start-line="96" selection-start-column="56" selection-end-line="96" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/graphql-go/graphql/definition.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -1129,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1142,129 +1101,121 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1625">
-          <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+        <state relative-caret-position="-1220">
+          <caret line="113" column="19" lean-forward="false" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
           <folding>
-            <marker date="1501230249161" expanded="true" signature="21:351" ph="..." />
-            <marker date="1501230249161" expanded="true" signature="392:443" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="424:441" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="497:1111" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="569:1108" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="617:1004" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="746:767" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="782:880" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="886:1000" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1010:1105" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1143:1932" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1215:1929" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1302:1336" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1406:1440" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1547:1624" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1652:1727" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="1781:1864" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2097:2166" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2180:5999" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2233:2277" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2321:2339" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2384:2401" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2437:2475" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2559:2584" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2660:2704" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2742:2792" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2830:2910" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="2973:3037" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3150:3170" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3314:5152" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3422:5067" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3517:5063" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3769:3796" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3840:4921" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="3906:3935" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4034:4915" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4083:4569" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4236:4561" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4378:4409" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4575:4907" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4715:4744" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="4800:4831" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5245:5620" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5280:5515" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5405:5426" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5521:5616" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5651:5896" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5681:5779" ph="{...}" />
-            <marker date="1501230249161" expanded="true" signature="5809:5831" ph="{...}" />
+            <element signature="e#14#351#0" expanded="true" />
+            <marker date="1501230249161" expanded="true" signature="651:693" ph="SELECT user_... logins" />
+            <marker date="1501230249161" expanded="true" signature="3712:3748" ph="select id, u... users" />
+            <marker date="1501230249161" expanded="true" signature="4274:4323" ph="INSERT INTO logins... " />
+            <marker date="1501230249161" expanded="true" signature="4612:4661" ph="INSERT INTO logins... " />
+            <marker date="1501230249161" expanded="true" signature="5313:5347" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Types/User.go">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/197bfedb-986c-4466-a1d1-340da597bb45/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Types/Mutation.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="96" column="56" lean-forward="false" selection-start-line="96" selection-start-column="56" selection-end-line="96" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/159a5b48/197bfedb-986c-4466-a1d1-340da597bb45/database.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/159a5b48/197bfedb-986c-4466-a1d1-340da597bb45/database.shifts">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Types/Query.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="111" column="17" lean-forward="true" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
           <folding>
-            <marker date="1501238182801" expanded="true" signature="22:123" ph="..." />
-            <marker date="1501238182801" expanded="true" signature="142:304" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="359:3238" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="441:3235" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="465:598" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="552:593" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="624:762" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="714:757" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="792:934" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="882:929" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="961:1100" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1051:1095" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1131:1274" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1221:1269" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1304:1446" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1394:1441" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1477:1620" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1567:1615" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1649:1790" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1739:1785" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1817:1956" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1907:1951" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="1983:2541" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2090:2536" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2252:2279" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2323:2441" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2373:2402" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2481:2508" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2573:3231" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2679:3226" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2906:2933" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="2977:3127" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3026:3055" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3167:3194" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3272:3924" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3279:3411" ph="(...)" />
-            <marker date="1501238182801" expanded="true" signature="3622:3639" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3653:3922" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3954:4815" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="3961:4093" ph="(...)" />
-            <marker date="1501238182801" expanded="true" signature="4251:4272" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="4310:4747" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="4415:4438" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="4459:4743" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="4781:4802" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="4867:5983" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="4874:5023" ph="(...)" />
-            <marker date="1501238182801" expanded="true" signature="5420:5441" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="5479:5916" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="5584:5607" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="5628:5912" ph="{...}" />
-            <marker date="1501238182801" expanded="true" signature="5950:5971" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="22:114" ph="..." />
+            <marker date="1504104429658" expanded="true" signature="146:4563" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="175:328" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="257:324" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="353:617" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="560:613" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="643:782" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="742:778" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="812:1086" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1024:1082" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1117:1266" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1221:1262" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1292:1558" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1500:1554" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1586:2265" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1659:1887" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="1951:2261" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="2104:2165" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="2187:2238" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="2296:4125" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="2524:4121" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="2533:2671" ph="(...)" />
+            <marker date="1504104429658" expanded="true" signature="2744:4098" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="2782:2934" ph="SELECT id, w... " />
+            <marker date="1504104429658" expanded="true" signature="2961:2988" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3032:4004" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3122:3151" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3201:3266" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3225:3259" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3289:3450" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3320:3442" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3456:3997" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3542:3628" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3576:3620" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3647:3845" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3669:3837" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3725:3835" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3851:3990" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3866:3982" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="3895:3980" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4044:4071" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4155:4560" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4227:4410" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4474:4556" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4581:4610" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4626:4657" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4675:4708" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4760:5186" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4848:5183" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4872:5002" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="4959:4997" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5030:5179" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5132:5174" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5241:5678" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5331:5675" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5356:5489" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5443:5484" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5521:5671" ph="{...}" />
+            <marker date="1504104429658" expanded="true" signature="5619:5666" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Types/Shift.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="64" column="103" lean-forward="false" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="103" />
+        <state relative-caret-position="459">
+          <caret line="67" column="5" lean-forward="false" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
           <folding>
-            <marker date="1499677899497" expanded="true" signature="22:107" ph="..." />
+            <marker date="1499677899497" expanded="false" signature="22:107" ph="..." />
             <marker date="1499677899497" expanded="true" signature="127:226" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="282:1230" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="366:1227" ph="{...}" />
@@ -1280,10 +1231,12 @@
             <marker date="1499677899497" expanded="true" signature="1174:1218" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="1266:1646" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="1273:1363" ph="(...)" />
+            <marker date="1499677899497" expanded="true" signature="1394:1459" ph="SELECT workp... shifts" />
             <marker date="1499677899497" expanded="true" signature="1525:1542" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="1556:1644" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="1711:2308" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="1733:1816" ph="(...)" />
+            <marker date="1499677899497" expanded="true" signature="1850:1936" ph="SELECT id, w... shifts" />
             <marker date="1499677899497" expanded="true" signature="1971:1992" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="2030:2241" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="2104:2127" ph="{...}" />
@@ -1291,19 +1244,30 @@
             <marker date="1499677899497" expanded="true" signature="2275:2296" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="2361:2765" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="2368:2451" ph="(...)" />
+            <marker date="1499677899497" expanded="true" signature="2482:2563" ph="SELECT id, w... shifts" />
             <marker date="1499677899497" expanded="true" signature="2635:2661" ph="{...}" />
             <marker date="1499677899497" expanded="true" signature="2675:2763" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Types/Query.go">
+    <entry file="file://$PROJECT_DIR$/Types/User.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="136" column="37" lean-forward="true" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+        <state relative-caret-position="544">
+          <caret line="213" column="381" lean-forward="false" selection-start-line="213" selection-start-column="381" selection-end-line="213" selection-end-column="381" />
           <folding>
-            <element signature="e#15#107#0" expanded="true" />
-            <marker date="1502019015958" expanded="true" signature="4765:5242" ph="/.../" />
+            <element signature="e#15#123#0" expanded="true" />
+            <marker date="1505306961233" expanded="true" signature="2171:2211" ph="select perm perms" />
+            <marker date="1505306961233" expanded="true" signature="2766:2865" ph="select id fr... workplaces" />
+            <marker date="1505306961233" expanded="true" signature="2805:2864" ph="select workp... users_workplaces" />
+            <marker date="1505306961233" expanded="true" signature="3442:3528" ph="SELECT usern... users" />
+            <marker date="1505306961233" expanded="true" signature="4156:4233" ph="select id, u... users" />
+            <marker date="1505306961233" expanded="true" signature="4156:4252" ph="select id, u... users" />
+            <marker date="1505306961233" expanded="true" signature="5090:5387" ph="SELECT id, u... users" />
+            <marker date="1505306961233" expanded="true" signature="5090:5432" ph="SELECT id, u... users" />
+            <marker date="1505306961233" expanded="true" signature="5186:5230" ph="SELECT user_... vacations" />
+            <marker date="1505306961233" expanded="true" signature="5245:5304" ph="SELECT user_... users_workplaces" />
+            <marker date="1505306961233" expanded="true" signature="5323:5385" ph="SELECT user_... shifts" />
           </folding>
         </state>
       </provider>

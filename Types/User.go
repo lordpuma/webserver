@@ -170,7 +170,7 @@ func LoadUsersList() []User {
 
 	var r []User
 	var id int32
-	rows, err := database.Db.Query("select id, username, email, first_name, last_name, bg_color, color from users")
+	rows, err := database.Db.Query("select id, username, email, first_name, last_name, bg_color, color from users ORDER BY last_name")
 	if err != nil {
 		log.Fatal(err)
 	}

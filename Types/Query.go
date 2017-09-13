@@ -1,6 +1,7 @@
 package Types
 
 import (
+	"fmt"
 	"github.com/graphql-go/graphql"
 	"github.com/lordpuma/webserver/database"
 	"log"
@@ -116,25 +117,22 @@ var RootQuery = graphql.Fields{
 						log.Fatal(err)
 					}
 					var needle *Day
-					//var found = false
 					for k, v := range days {
 						if v.Day == day {
 							needle = &days[k]
-							//found = true
 						}
 					}
-					if needle != nil {
+					if needle == nil {
 						days = append(days, Day{day, []W{{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}}}})
 					} else {
+						fmt.Println(needle)
 						var n *W
-						//var f = false
 						for ke, ve := range needle.Workplace {
 							if ve.Id == workplace_id {
 								n = &needle.Workplace[ke]
-								//f = true
 							}
 						}
-						if n != nil {
+						if n == nil {
 							*needle = Day{needle.Day,
 								append(needle.Workplace,
 									W{workplace_id, []Shift{{Id: id, Date: d, Note: note, user_id: int(user_id), workplace_id: int(workplace_id)}}})}

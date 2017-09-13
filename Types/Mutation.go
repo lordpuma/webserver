@@ -267,7 +267,7 @@ var RootMutation = graphql.Fields{
 		},
 		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
 			if p.Args["Note"] == nil {
-				p.Args["Note"] = ' '
+				p.Args["Note"] = ""
 			}
 			out, err := database.Db.Exec("INSERT INTO shifts (user_id, workplace_id, date, note) VALUES (?, ?, ?, ?)", p.Args["Userid"].(int), p.Args["Workplaceid"].(int), p.Args["Date"], p.Args["Note"])
 			if err != nil {
@@ -310,9 +310,16 @@ var RootMutation = graphql.Fields{
 				}
 			}
 			if p.Args["Note"] != nil {
-				_, err := database.Db.Exec("UPDATE shifts SET note = ? WHERE id = ?", p.Args["Note"].(string), p.Args["Id"].(int))
-				if err != nil {
-					return nil, err
+				if p.Args["Note"] == "RESET NOTE PLS" {
+					_, err := database.Db.Exec("UPDATE shifts SET note = ? WHERE id = ?", "", p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
+				} else {
+					_, err := database.Db.Exec("UPDATE shifts SET note = ? WHERE id = ?", p.Args["Note"].(string), p.Args["Id"].(int))
+					if err != nil {
+						return nil, err
+					}
 				}
 			}
 			return LoadShiftById(p.Args["Id"].(int)), nil

@@ -56,22 +56,22 @@
       <file leaf-file-name="User.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Types/User.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="215" column="19" lean-forward="true" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+            <state relative-caret-position="374">
+              <caret line="218" column="22" lean-forward="true" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
               <folding>
                 <element signature="e#15#123#0" expanded="true" />
-                <marker date="1506432706460" expanded="true" signature="2171:2211" ph="select perm perms" />
-                <marker date="1506432706460" expanded="true" signature="2766:2865" ph="select id fr... workplaces" />
-                <marker date="1506432706460" expanded="true" signature="2805:2864" ph="select workp... users_workplaces" />
-                <marker date="1506432706460" expanded="true" signature="3442:3528" ph="SELECT usern... users" />
-                <marker date="1506432706460" expanded="true" signature="4156:4233" ph="select id, u... users" />
-                <marker date="1506432706460" expanded="true" signature="4156:4252" ph="select id, u... users" />
-                <marker date="1506432706460" expanded="true" signature="5092:5434" ph="SELECT id, u... users" />
-                <marker date="1506432706460" expanded="true" signature="5188:5232" ph="SELECT user_... vacations" />
-                <marker date="1506432706460" expanded="true" signature="5247:5306" ph="SELECT user_... users_workplaces" />
-                <marker date="1506432706460" expanded="true" signature="5325:5387" ph="SELECT user_... shifts" />
-                <marker date="1506432706460" expanded="true" signature="5504:5702" ph="SELECT id, u... users" />
-                <marker date="1506432706460" expanded="true" signature="5596:5655" ph="SELECT user_... users_workplaces" />
+                <marker date="1506434344806" expanded="true" signature="2171:2211" ph="select perm perms" />
+                <marker date="1506434344806" expanded="true" signature="2766:2865" ph="select id fr... workplaces" />
+                <marker date="1506434344806" expanded="true" signature="2805:2864" ph="select workp... users_workplaces" />
+                <marker date="1506434344806" expanded="true" signature="3442:3528" ph="SELECT usern... users" />
+                <marker date="1506434344806" expanded="true" signature="4156:4233" ph="select id, u... users" />
+                <marker date="1506434344806" expanded="true" signature="4156:4252" ph="select id, u... users" />
+                <marker date="1506434344806" expanded="true" signature="5092:5434" ph="SELECT id, u... users" />
+                <marker date="1506434344806" expanded="true" signature="5188:5232" ph="SELECT user_... vacations" />
+                <marker date="1506434344806" expanded="true" signature="5247:5306" ph="SELECT user_... users_workplaces" />
+                <marker date="1506434344806" expanded="true" signature="5325:5387" ph="SELECT user_... shifts" />
+                <marker date="1506434344806" expanded="true" signature="5504:5702" ph="SELECT id, u... users" />
+                <marker date="1506434344806" expanded="true" signature="5596:5655" ph="SELECT user_... users_workplaces" />
               </folding>
             </state>
           </provider>
@@ -1266,22 +1266,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Types/User.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="215" column="19" lean-forward="true" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+        <state relative-caret-position="374">
+          <caret line="218" column="22" lean-forward="true" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
           <folding>
             <element signature="e#15#123#0" expanded="true" />
-            <marker date="1506432706460" expanded="true" signature="2171:2211" ph="select perm perms" />
-            <marker date="1506432706460" expanded="true" signature="2766:2865" ph="select id fr... workplaces" />
-            <marker date="1506432706460" expanded="true" signature="2805:2864" ph="select workp... users_workplaces" />
-            <marker date="1506432706460" expanded="true" signature="3442:3528" ph="SELECT usern... users" />
-            <marker date="1506432706460" expanded="true" signature="4156:4233" ph="select id, u... users" />
-            <marker date="1506432706460" expanded="true" signature="4156:4252" ph="select id, u... users" />
-            <marker date="1506432706460" expanded="true" signature="5092:5434" ph="SELECT id, u... users" />
-            <marker date="1506432706460" expanded="true" signature="5188:5232" ph="SELECT user_... vacations" />
-            <marker date="1506432706460" expanded="true" signature="5247:5306" ph="SELECT user_... users_workplaces" />
-            <marker date="1506432706460" expanded="true" signature="5325:5387" ph="SELECT user_... shifts" />
-            <marker date="1506432706460" expanded="true" signature="5504:5702" ph="SELECT id, u... users" />
-            <marker date="1506432706460" expanded="true" signature="5596:5655" ph="SELECT user_... users_workplaces" />
+            <marker date="1506434344806" expanded="true" signature="2171:2211" ph="select perm perms" />
+            <marker date="1506434344806" expanded="true" signature="2766:2865" ph="select id fr... workplaces" />
+            <marker date="1506434344806" expanded="true" signature="2805:2864" ph="select workp... users_workplaces" />
+            <marker date="1506434344806" expanded="true" signature="3442:3528" ph="SELECT usern... users" />
+            <marker date="1506434344806" expanded="true" signature="4156:4233" ph="select id, u... users" />
+            <marker date="1506434344806" expanded="true" signature="4156:4252" ph="select id, u... users" />
+            <marker date="1506434344806" expanded="true" signature="5092:5434" ph="SELECT id, u... users" />
+            <marker date="1506434344806" expanded="true" signature="5188:5232" ph="SELECT user_... vacations" />
+            <marker date="1506434344806" expanded="true" signature="5247:5306" ph="SELECT user_... users_workplaces" />
+            <marker date="1506434344806" expanded="true" signature="5325:5387" ph="SELECT user_... shifts" />
+            <marker date="1506434344806" expanded="true" signature="5504:5702" ph="SELECT id, u... users" />
+            <marker date="1506434344806" expanded="true" signature="5596:5655" ph="SELECT user_... users_workplaces" />
           </folding>
         </state>
       </provider>

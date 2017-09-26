@@ -212,7 +212,7 @@ func FreeUsers(date string, workplace int) []User {
 	)
 	var r []User
 	//rows, err := database.Db.Query("SELECT id, username, email, first_name, last_name, bg_color, color FROM users	WHERE (id NOT IN (SELECT user_id FROM vacations WHERE date = ?)) AND (id IN (SELECT user_id FROM users_workplaces WHERE workplace_id = ?))	AND (id NOT IN (SELECT user_id FROM shifts WHERE date = ? AND workplace_id = ?)) ORDER BY last_name, first_name, username, id", date, workplace, date, workplace)
-	rows, err := database.Db.Query("SELECT id, username, email, first_name, last_name, bg_color, color FROM users	WHERE (id IN (SELECT user_id FROM users_workplaces WHERE workplace_id = ?)) ORDER BY last_name, first_name, username, id", date, workplace, date, workplace)
+	rows, err := database.Db.Query("SELECT id, username, email, first_name, last_name, bg_color, color FROM users	WHERE (id IN (SELECT user_id FROM users_workplaces WHERE workplace_id = ?)) ORDER BY last_name, first_name, username, id", workplace)
 	if err != nil {
 		log.Fatal(err)
 	}

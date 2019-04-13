@@ -239,7 +239,7 @@ func main() {
 	}))
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com", "http://localhost:4200"},
+    AllowedOrigins:   []string{"https://intranet-c2bbb.firebaseapp.com", "https://intranet.lempls.com", "http://localhost:4200", "https://poepoe-shifts.firebaseapp.com", "https://poepoe.lempls.com"},
 		AllowedMethods:   []string{"GET", "POST", "PUT"},
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: true,
